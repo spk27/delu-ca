@@ -8,11 +8,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="CSS/style.css" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <title>JSP+MySQL Conexión</title>
 </head>
 
 <body>
-<h1>Estatus de la conexión</h1>
+<h1 class="conex_ok_title">Estatus de la conexión</h1>
+<div class="conex_ok_message">
 <%
 	try {
 		String connectionURL = "jdbc:mysql://localhost:3306/db_daluca";
@@ -20,11 +22,12 @@
 		Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 		connection = DriverManager.getConnection(connectionURL, "root", "lperez18");
 		if(!connection.isClosed())
-			 out.println("Successfully connected to " + "MySQL server using TCP/IP...");
+			 out.println("Se ha conectado satisfactoriamente a " + connectionURL);
 		connection.close();
 	}catch(Exception ex){
-		out.println("Unable to connect to database. "+ex);
+		out.println("Algo ha acurrido, no se ha podido conectar a la BD. "+ex);
 	}  
 %>
+</div>
 </body>
 </html>
