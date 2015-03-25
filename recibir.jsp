@@ -10,7 +10,7 @@
 
 <body>
 	<!-- Para ver acentos -->
-	<%  request.setCharacterEncoding("UTF-8") %>
+	<%  request.setCharacterEncoding("UTF-8"); %>
 	<%= request.getParameter("texto") %>
 </body>
 </html>
