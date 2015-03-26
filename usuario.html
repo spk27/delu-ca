@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Proy2015</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/dalustyle.css" type="text/css" />
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo">Dalu<span class="gray"> c.a</span></h1>
+    <h2 id="slogan">Proyecto Web..</h2>
+     <div id="loginform">         
+      <form method="" class="login" action="#">
+        <p>
+          <input name="cuenta" value="Cuenta" class="button" type="submit" />
+          <input name="salir" value="Salir" class="button" type="submit" />
+        </p>
+      </form>
+    </div>
+  </div>
+    
+  <div id="menu">
+    <ul>
+      <li id="current"><a href="#"><span>Inicio</span></a></li>
+      <li><a href="#"><span>Reportar/Consular</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrap">
+
+    <div id="main"> 
+      <h1>Atención</h1>
+        
+    
+        <p>En la opción<strong> Reportes</strong> puede emitir sus solicitudes de incidentes </p>
+
+       <input name="reportar" value="Reportar" class="higth_button" type="submit" onclick="hideshow();" />
+            
+        <form name="form" style="display:block" method="" enctype="multipart/form-data">
+            <label>Prioridad</label>
+            <input type="radio" name="prioridad" value="1"> 1 </br>
+            <input type="radio" name="prioridad" value="2" checked > 2 </br>
+            <input type="radio" name="prioridad" value="3"> 3 </br>
+            <label>Tipo</label>
+            <select class="reportar" name="tipo">
+                <option selected>Hardware</option>
+                <option>Software</option>
+                <option>Desarrollo</option>
+            </select> </br>
+            <label>Imagen</label>
+            <input class="button" type=file size=60 name="file1"><br><br>
+            <label>Comentario</label>
+            <textarea rows="5" cols="5"></textarea> </br>
+            <input class="button" type="submit" value="enviar">
+        </form>
+        
+      <script>
+        function hideshow(){
+        var frm=document.form;
+        if(frm.style.display=="block"){frm.style.display="none"}
+        else
+        if(frm.style.display=="none"){frm.style.display="block"}
+        }
+      </script>   
+        
+        </br></br>        
+
+    <p>Como tambien puede <strong>Consultar</strong> el estado sus solicitudes ya emitidas</p>
+      
+        <input class="higth_button" name="consulta" value="Consultar"  type="submit" onclick="hideshow2();" />
+        
+        <form method="" name="form2" style="display:block">
+            
+            
+            <table>
+            <tr> 
+                <th></th>
+                <th>N#</th>
+                <th>Fecha</th>
+                <th>Prioridad</th>
+                <th>Tipo</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+                <th>Imagen</th>
+                <th>Comentario</th>
+            </tr>
+            <tr> 
+                <td><input type="radio" name="s1" value="1"></td>
+                <td>#1111</td> 
+                <td>17-03</td> 
+                <td>3</td>
+                <td>Hardware</td>
+                <td>daguilar</td>
+                <td>pverde</td>
+                <td class="imagen"></td>
+                <td class="coments"><a href="#">Abrir</a></td>
+            </tr>
+            <tr> 
+                <td><input type="radio" name="s1" value="3"></td>
+                <td>#3333</td>
+                <td>17-03</td>
+                <td>1</td>
+                <td>Software</td>
+                <td>lperez</td>
+                <td>projo</td>
+                <td class="imagen"></td>
+                <td class="coments"><a href="#">Abrir</a></td>
+            </tr>
+        </table> 
+    <p>Finaliza su solicitud, seleccionela y <strong>Califiquela</strong> </p>
+    <input class="small_button" name="calificar" value="calificar"  type="submit" />
+            
+        </form>
+    
+      <script>
+        function hideshow2(){
+        var aux=document.form2;
+        if(aux.style.display=="block"){aux.style.display="none"}
+        else
+        if(aux.style.display=="none"){aux.style.display="block"}
+        }
+      </script>
+        
+        </br></br>
+ 
+     </form>
+    
+        <p class="post-footer align-right"> <span class="date">Abril 00, 2015</span> </p>
+
+      <br />
+    </div>
+  </div>
+  <div id="footer">
+    <p> &copy; 2015 <strong>Dalu Company</strong> </p>
+  </div>
+</div>
+</body>
+</html>
