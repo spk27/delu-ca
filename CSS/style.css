@@ -7,13 +7,22 @@ body{
 	color:#09F;
 	text-align:center;
 	margin: auto;
+	font-size: 26px;
 }
 
 .conex_ok_message{
 	background-color:#CCC;
 	color:#000;
+	font-size: 16px;
 	text-align:center;
 	margin: 5px 5px 5px 5px;
 	padding-top: 20px;
 	padding-bottom: 20px;
+}
+
+.conex_back{
+	margin: 0px 5px -10px 5px;
+	padding: 5px;
+	font-size: 15px;
+	background-color: lightblue;
 }

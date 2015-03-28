@@ -1,14 +1,18 @@
-@import url(http://fonts.googleapis.com/css?family=Oswald);
-@import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
+@import url(../images/http://fonts.googleapis.com/css?family=Oswald);
+@import url(../images/http://fonts.googleapis.com/css?family=Lato:400,700,900);
 
+#inside{
+	margin-top: 10px;
+	font-variant: small-caps;
+}
 /* Top Elements */
 * { margin: 0; padding: 0; }
 
 body {
-	/*background: url(bg.png);*/
+	/*background: url(../images/bg.png);*/
 	font-family: 'Lato', sans-serif;
-	font-size: 0.8em;
-	color: #333; 
+	font-size: 14px;
+	color: #000; 
 	text-align: center;
 	background-color: #f2f7f9;
 	min-width: 700px;
@@ -42,14 +46,12 @@ ul, ol {
 }
 
 /* images */
-img {
-	border: 2px solid #CCC;
-}
 img.float-right {
   margin: 5px 0px 5px 10px;  
 }
 img.float-left {
-  margin: 5px 10px 5px 0px;
+  margin: 5px 10px 5px 93px;
+	position: fixed;
 }
 
 code {
@@ -73,7 +75,7 @@ blockquote {
 	margin: 10px;
  	padding: 0 0 0 28px;  
    border: 1px solid #f2f2f2; 
-  	background: #FAFAFA url(quote.gif) no-repeat 5px 5px;    
+  	background: #FAFAFA url(../images/images/quote.gif) no-repeat 5px 5px;    
 }
 
 /* form elements */
@@ -163,23 +165,24 @@ input.small_button {
 ********************************************/ 
 #wrap {
 	width: 100%;
-	/*background: url(bg.jpg);*/
+	/*background: url(../images/bg.jpg);*/
 	margin: 0 auto;
 	text-align: left;
 	background-color: #F2F7F9;
 }
 #content-wrap {
 	position: relative;
-	width: 98%;
+	float: left;
+	width: 45%;
 	margin: 0 auto;
-	padding: 0;	
+	padding: 10px;	
 }
 /* header */
 #header {
 	position: relative;
 	width: 100%;
 	height: 100px;
-	background: #FFF url(header.jpg) repeat-x center top;
+	background: #FFF url(../images/header.jpg) repeat-x center top;
 	margin: 0; padding: 0;
 	font-size: 14px;
 	color: #FFF;
@@ -256,7 +259,7 @@ input.small_button {
 #main h1 {
 	color: #667F99; 
 	border-bottom: 1px solid #CCCCCC;
-	background: #F6F6F6 url(arrow.gif) no-repeat 5px 50%;	
+	background: #F6F6F6 url(../images/arrow.gif) no-repeat 5px 50%;	
 	padding: 3px 0 3px 20px;	
 	margin: 10px 0 0 0;
 }
@@ -268,15 +271,15 @@ input.small_button {
 	font-size: 95%;	
 }
 .post-footer .date {
-	background: url(clock.gif) no-repeat left center;
+	background: url(../images/clock.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 .post-footer .comments {
-	background: url(comment.gif) no-repeat left center;
+	background: url(../images/comment.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 .post-footer .readmore {
-	background: url(page.gif) no-repeat left center;
+	background: url(../images/page.gif) no-repeat left center;
 	padding-left: 20px; margin: 0 10px 0 5px;
 }
 
@@ -285,12 +288,14 @@ input.small_button {
 	clear: both;
 	color: #f3f7f9;
 	font: bold 100% "Lato", sans-serif;
-	background: #f2f7f9 url(footerbg.jpg) repeat-x center top;	
+	background: #f2f7f9 url(../images/../images/footerbg.jpg) repeat-x center top;	
 	width: 100%;
 	height: 60px;
 	text-align: center;
-	padding: 8px 0 0 0;
-	margin: 0 auto;	
+	margin: 0 auto;
+	position:absolute;
+	bottom:0;
+	left:0;
 }
 #footer a { text-decoration: none; }
 
@@ -352,7 +357,7 @@ select.reportar {
 }
 
 .imagen {
-    background: url("cinco.png");
+    background: url(../images/"cinco.png");
     background-size: contain;
 }
 
