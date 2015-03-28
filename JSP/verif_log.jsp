@@ -11,6 +11,18 @@
 <body>
 	<!-- Para ver acentos -->
 	<%  request.setCharacterEncoding("UTF-8"); %>
-	<%= request.getParameter("texto") %>
+	<!-- Extrayendo los datos del formulario -->
+	<% String user = request.getParameter("usu"); %>
+	<% String pass = request.getParameter("con"); %>
+
+	<%
+		out.print(user+pass+"<br>");
+		if(user.equals("lperez") && pass.equals("lperez")){
+			out.print("Florence is Alive!");
+		}else{
+			out.print("Florence is love");
+		}
+	%>
+
 </body>
 </html>

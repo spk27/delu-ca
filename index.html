@@ -1,20 +1,50 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" href="CSS/style.css" type="text/css" />
-
-<title>DALU-CA</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="images/dalustyle.css" type="text/css" />
+  <title>DALU-CA</title>
 </head>
- 
-<body>
-<p><a href="portfolio/indice.html" title="Ultimos proyectos realizados por Mi Sitio">Acceder a los últimos proyectos de Mi Sitio</a></p>
 
-<form action="recibir.jsp" method="post">
-<input name="texto" type="text" size="50" maxlength="50" />
-<input name="Enviar" type="submit" value="Send" />
-</form>
+<body>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo">DALU<span class="gray"> C.A</span></h1>
+    <h2 id="slogan">Proyecto de Desarrollo Web</h2>
+    <div id="loginform">
+      <form method="POST" class="login" action="JSP/verif_log.jsp" autocomplete="off">
+        <p>
+          <input name="usu" placeholder="Usuario" type="text" class="textbox" value="" />
+          <input name="con" placeholder="Contraseña"  type="password" class="textbox" value="" />
+          <input name="log" value="Entrar" class="button" type="submit" />
+        </p>
+      </form>
+    </div>
+  </div>
+  <div id="menu">
+    <ul>
+      <li id="current"><a href="#"><span>Inicio</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrap">
+    
+    <div id="main">
+      <h1>Informacion</h1>
+      <p>Sistema para la gestión de siniestros en el area de sistemas de la compañia <strong>DALU C.A</strong></p>
+      
+      <h1>¿Quienes somos?</h1>
+      <p>Somos una empresa comprometida con lo que hace y brindamos productos de calidad, contamos con experiencian en muchos campos y reunimos mas de 50 años de experiencia en el campo en el que nos desemvolvemos.</p>
+      
+      <h1>Contacto</h1>
+      <p>Sientasé libre de escribirnos a contacto_dalu.ca@dalu.ca.org<br>En cualquier momento le atenderemos.</p>
+
+      <p class="post-footer align-right"> <a href="#" class="readmore">Read more</a> <a href="#" class="comments">Comments (7)</a> <span class="date">Marzo 20, 2015</span> </p>
+    </div>
+  </div>
+  <div id="footer">
+    <p> &copy; 2015 <strong>Dalu Company</strong> </p>
+  </div>
+</div>
 </body>
- 
 </html>
