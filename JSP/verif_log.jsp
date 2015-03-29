@@ -1,5 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*,java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 
@@ -16,11 +16,21 @@
 	<% String pass = request.getParameter("con"); %>
 
 	<%
+		String var = "sesion_admin";
+		String var2 = "sesion_ana";
+
 		out.print(user+pass+"<br>");
+
 		if(user.equals("lperez") && pass.equals("lperez")){
-			out.print("Florence is Alive!");
+			session.setAttribute("iniSesion", var);
+			String site = new String("../index.jsp");
+			response.setStatus(response.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location",site);
 		}else{
-			out.print("Florence is love");
+			String site = new String("../index.jsp");
+			session.setAttribute("iniSesion", null);
+			response.setStatus(response.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location",site);
 		}
 	%>
 

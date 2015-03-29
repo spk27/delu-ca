@@ -1,68 +1,49 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<title>Proy2015</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="images/dalustyle.css" type="text/css" />
-</head>
-<body>
-<div id="wrap">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <div id="wrap"> 
   <div id="header">
-    <h1 id="logo">Dalu<span class="gray"> c.a</span></h1>
-    <h2 id="slogan">Proyecto Web..</h2>
-     <div id="loginform">         
-      <form method="" class="login" action="#">
-        <p>
-          <input name="cuenta" value="Cuenta" class="button" type="submit" />
-          <input name="salir" value="Salir" class="button" type="submit" />
-        </p>
+    <img class="float-left" src="images/Org_Logo.png" width="89px">
+    <h1 id="logo">DALU<span class="gray"> C.A</span></h1>
+    <h2 id="slogan">Proyecto de Desarrollo Web</h2>
+
+     <div id="loginform">
+      <form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
+        <input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
+        <input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
       </form>
     </div>
   </div>
-    
   <div id="menu">
     <ul>
       <li id="current"><a href="#"><span>Inicio</span></a></li>
       <li><a href="#"><span>Administrar</span></a></li>
     </ul>
   </div>
+  <div>
   <div id="content-wrap">
-
     <div id="main"> 
-      <h1>Atención</h1>
-        
-    
-        <p><strong> Registrar</strong> usuario </p>
-
-       <input name="registrar" value="Registrar" class="higth_button" type="submit" onclick="hideshow();" />
-            
-        <form name="form" style="display:block" method="" >
-            <label>Matricula</label>
-            <input type="text" name="matricula" class="textbox" size="20"> </br>
-            <label>Nombre</label>
-            <input type="text" name="nombre" class="textbox" size="20"> </br>
-            <label>Apellido</label>
-            <input type="text" name="apellido" class="textbox" size="20"> </br>
-            <label>cedula</label>
-            <input type="text" name="cedula" class="textbox" size="20"> </br>
-            <label>Tipo de Usuario</label>
-            <select name="tipo">
+      <h1 onclick="hideshow();" class="mouse">Registrar usuario</h1>
+       <form name="form" style="display:block" method="" >
+            <label>Matricula: <input type="text" name="matricula" class="input_form_cuerpo glow" size="20"></label>
+            <label>Nombre: <input type="text" name="nombre" class="input_form_cuerpo glow" size="20"></label>
+            <label>Apellido: <input type="text" name="apellido" class="input_form_cuerpo glow" size="20"></label>
+            <label>Cédula: <input type="text" name="cedula" class="input_form_cuerpo glow" size="20"></label>
+            <label>Tipo de Usuario
+            <select class="select_form_cuerpo glow" name="tipo">
                 <option value="1">Usuario</option> 
                 <option value="2">Gerente</option> 
                 <option value="3">Administrador</option> 
-            </select> </br>
-            <label>Departamento</label>
-            <select name="departamento">
+            </select></label>
+            <label>Departamento
+            <select class="select_form_cuerpo glow" name="departamento">
                 <option value="1">Sistemas</option> 
                 <option value="2">Ventas</option> 
                 <option value="3">Compras</option>
                 <option value="3">Seguridad</option>
                 <option value="3">Mantenimiento</option>
-            </select> </br>
-    
+            </select></label>
             <label>Comentario</label>
             <textarea name="comentario" rows="5" cols="5"></textarea> </br>
-            <input class="button" type="submit" value="enviar">
+            <input class="button_header button_whole glow" type="submit" value="enviar">
         </form>
         
       <script>
@@ -72,18 +53,16 @@
         else
         if(frm.style.display=="none"){frm.style.display="block"}
         }
-      </script>   
-        
-        </br></br>        
-
-    <p><strong>Eliminar</strong> usuario</p>
-      
-        <input class="higth_button" name="eliminar" value="Eliminar"  type="submit" onclick="hideshow2();" />
-        
+      </script>
+    </div>
+  </div>
+  <div id="content-wrap">
+    <div id="main">         
+    <h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
         <form method="" name="form2" style="display:block">
             <label>Matricula a eliminar</label>
-            <input type="text" name="eliMatri" class="textbox" size="20"> </br>
-            <input class="button" type="submit" value="eliminar"
+            <input type="text" name="eliMatri" class="input_form_cuerpo glow" size="20"> </br>
+            <input class="button_header button_whole glow" type="submit" value="eliminar">
         </form>
     
       <script>
@@ -94,19 +73,9 @@
         if(aux.style.display=="none"){aux.style.display="block"}
         }
       </script>
-        
-        </br></br>
- 
      </form>
-    
-        <p class="post-footer align-right"> <span class="date">Abril 00, 2015</span> </p>
-
-      <br />
     </div>
   </div>
-  <div id="footer">
-    <p> &copy; 2015 <strong>Dalu Company</strong> </p>
-  </div>
 </div>
-</body>
-</html>
+</div>
+
