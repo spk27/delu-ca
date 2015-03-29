@@ -4,6 +4,7 @@
 #inside{
 	margin-top: 10px;
 	font-variant: small-caps;
+	padding-top: 15px;
 }
 /* Top Elements */
 * { margin: 0; padding: 0; }
@@ -15,7 +16,7 @@ body {
 	color: #000; 
 	text-align: center;
 	background-color: #f2f7f9;
-	min-width: 700px;
+	min-width: 800px;
 	margin:0;
 	padding:0;
 	height:100%;
@@ -43,10 +44,6 @@ h1, h2, h3, p {
 	margin: 0;
 	padding: 10px;		
 }
-ul, ol {
-	margin: 10px 20px;
-	padding: 0 20px;
-}
 
 /* images */
 img.float-right {
@@ -54,7 +51,6 @@ img.float-right {
 }
 img.float-left {
   margin: 5px 10px 5px 93px;
-	position: fixed;
 }
 
 code {
@@ -83,13 +79,12 @@ blockquote {
 
 /* form elements */
 form {
-	margin:10px; padding: 0 5px;
-	background-color: #FAFAFA; 
+	margin: 5px 5px 5px 5px;
 }
 label {
 	display:block;
 	font-weight:bold;
-	margin:5px 0;
+	margin-bottom: 6px;
 }
 textarea {
 	width:400px;
@@ -97,7 +92,7 @@ textarea {
 	font: normal 1em "Lato", sans-serif;
 	height:100px;
 	display:block;
-	color:#777;
+	color: #000;
 }
 input.button { 
 	margin: 1px; 
@@ -124,7 +119,7 @@ form.login input.textbox {
 	text-align: center;
 }
 form.login input.button {
-	height: 26px;
+	height: 23px;
 	padding: 1px 3px;
 	width: 70px;
     border-radius: 0.0em; /* Ojo */
@@ -155,20 +150,25 @@ input.small_button {
 /********************************************
    LAYOUT
 ********************************************/ 
+.body_inside{
+	position:relative;
+	margin-left: 19px;
+}
 #wrap {
 	width: 100%;
 	/*background: url(../images/bg.jpg);*/
 	margin: 0 auto;
 	text-align: left;
 	background-color: #F2F7F9;
-	min-height:100%;
-	position:relative;
+	min-height: 100%;
+	position: relative;
 }
 #content-wrap {
 	position: relative;
 	float: left;
-	width: 45%;
-	margin: 0 auto;
+	width: 48%;
+}
+#main{
 	padding: 10px;
 }
 /* header */
@@ -210,52 +210,58 @@ input.small_button {
 }
 /* menu */
 #menu {
+	box-sizing:border-box;
 	clear: both;
 	width: 100%;
-	height: 30px;
+	height: 40px;
 	background: #AAAAAA;
 	margin: 0;
-	font: bolder 12px/26px "Lato", Sans-Serif;
-	font-weight: 700;
-	font-size: 14px;
+	padding-left: 30px;
+	font-family: "Lato", Sans-Serif;
+	font-weight: 600;
 }
 #menu ul{
-	margin: 0; padding: 0 0 0 30;
 }
 #menu ul li {
+	box-sizing:border-box;
 	float: left;
 	list-style: none;
-	vertical-align: middle;
 }
 #menu ul li a {
+	font-size: 20px;
 	display: block;
-	text-decoration: none;	
-	padding: 0 10px;
-	background: inherit;
+	padding-left: 10px;
+	padding-right: 10px;
 	color: #FFF;
-	height: 30px;
+	height: 40px;
+	width: 200px;
+	text-align: center;
+}
+.span_menu{
 	vertical-align: middle;
+	padding-top: 10px;
 }
 #menu ul li a:hover {
 	background: #636363; 
 	color: #f2f7f9;  
 }
-#menu ul li#current a {	
+#menu ul li#current a {
+	box-sizing:border-box;
 	background: #f2f7f9; 
 	color: #26a3e4;
+	font-variant: small-caps;
+	border-bottom: solid 3px #26a3e4;
 }
 
-/* Main */
-#main {
-	width: 100%;
-	padding: 0;	margin: 0;	
-}
 #main h1 {
-	color: #667F99; 
-	border-bottom: 1px solid #CCCCCC;
+	color: #667F99;
+	font-variant-caps: all-small-caps;
+	font-size: 23px;
+	border-bottom: 2px solid #26a3e4;
 	background: #F6F6F6 url(../images/arrow.gif) no-repeat 5px 50%;	
-	padding: 3px 0 3px 20px;	
+	padding: 3px 0 3px 20px;
 	margin: 10px 0 0 0;
+	cursor: pointer;
 }
 
 .post-footer {
@@ -350,7 +356,7 @@ input, textarea, select{
 	border: solid 1px #26a3e4;
 	color: #000000;
 	font-size: 15px;
-	margin-bottom: 5px;
+	margin-top: 2px;
 }
 
 input{
@@ -364,7 +370,7 @@ label{
 
 textarea{
 	padding: 5px;
-	width: 100%;
+	width: 98%;
 }
 
 .input_header{
@@ -378,16 +384,15 @@ textarea{
 
 .input_form_cuerpo{
 	padding: 3px;
-	margin-left: 3px;
 	font-family: "Lato", sans-serif;
 	font-size: 14px;
 	color: #000000;
-	width: 100%;
+	width: 99%;
 }
 
 .select_form_cuerpo{
 	padding: 3px;
-	margin-left: 3px;
+	margin-left: 0px;
 	height: 34px;
 	font-family: "Lato", sans-serif;
 	font-size: 14px;
@@ -403,6 +408,21 @@ textarea{
 	color: #FFFFFF;
 	height: 32px;
 	border: none;
+}
+
+.button_cuerpo{
+	margin-top: 5px;
+	background-color: #636363;
+	font-size: 16px;
+	color: #FFFFFF;
+	height: 32px;
+	border: none;
+}
+
+.button_header:hover{
+	background-color: #636363;
+	color: #26a3e4;
+	font-variant: small-caps;
 }
 
 .button_short{

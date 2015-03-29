@@ -29,8 +29,7 @@ CREATE TABLE db_daluca.solicitud_ticket
 	descripcion_solucion varchar(500) not null, 
 	tiempo_requerido time not null,
 	primary key(numero_solicitud)
-	
-	primary key (cedula)
+	foreign key (cedula) references usuario(cedula)
 );
 /* ********************************************************************************************************************* */
 CREATE TABLE db_daluca.departamento

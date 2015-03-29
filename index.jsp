@@ -30,10 +30,10 @@
     
     <div id="menu">
       <ul>
-        <li id="current"><a href="#"><span>Inicio</span></a></li>
+        <li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
       </ul>
     </div>
-    <div>
+    <div class="body_inside">
       <div id="content-wrap">
         <div id="main">
           <h1>Informacion</h1>
@@ -57,7 +57,7 @@
     <%@ include file="admin.html" %>
   <% } %>
   <div id="footer">
-      <p id="inside">&copy; 2015 <strong>Dalu Company</strong></p>
+      <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>
   </div>
 </body>
 </html>

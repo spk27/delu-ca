@@ -33,7 +33,7 @@
 			}  
 			%>
 		</div>
-		<div class="conex_back float-left"><a href="../index.html" name="Ir al sitio principal.">Página de Inicio</a></div>
+		<div class="conex_back float-left"><a href="../index.jsp" name="Ir al sitio principal.">Página de Inicio</a></div>
 	</div>
 </body>
 </html>
