@@ -31,6 +31,7 @@
     <div id="menu">
       <ul>
         <li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+        <li style="float: right; margin-right: 20px;"><span class="span_menu">Usted no ha iniciado sesión</span></li>
       </ul>
     </div>
     <div class="body_inside">
@@ -61,7 +62,10 @@
   <% }
   if("sesion_gerente" == session.getAttribute("iniSesion")){ %>
     <%@ include file="gerente.html" %>
-  <% }%>
+  <% }
+  if("sesion_usuario" == session.getAttribute("iniSesion")){ %>
+    <%@ include file="usuario.html" %>
+  <% } %>
   <div>&nbsp;</div>
   <div id="footer">
       <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>

@@ -16,14 +16,16 @@
 	<% String pass = request.getParameter("con"); %>
 
 	<%
+		/*to discrimanate among sessions*/
 		String var = "sesion_admin";
 		String var2 = "sesion_ana";
 		String var3 = "sesion_gerente";
+		String var4 = "sesion_usuario";
 
 		out.print(user+pass+"<br>");
 
 		if(user.equals("lperez") && pass.equals("lperez")){
-			session.setAttribute("iniSesion", var3);
+			session.setAttribute("iniSesion", var4);
 			String site = new String("../index.jsp");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location",site);

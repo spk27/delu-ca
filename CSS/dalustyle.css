@@ -246,10 +246,10 @@ input.small_button {
 }
 #menu ul li a:hover {
 	background: #636363; 
-	color: #f2f7f9;  
+	color: #f2f7f9;
 }
 #menu ul li#current a {
-	box-sizing:border-box;
+	box-sizing: border-box;
 	background: #f2f7f9; 
 	color: #26a3e4;
 	font-variant: small-caps;
