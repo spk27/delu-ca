@@ -1,39 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<title>Proy2015</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="CSS/dalustyle.css" type="text/css" />
-</head>
-<body>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="wrap">
   <div id="header">
-    <img class="float-left" src="images/Org_Logo.png" width="89px">
-    <h1 id="logo">Dalu<span class="gray"> c.a</span></h1>
-    <h2 id="slogan">Proyecto Web..</h2>
-     <div id="loginform">         
-      <form method="" class="login" action="#">
-        <p>
-          <input name="cuenta" value="Cuenta" class="button" type="submit" />
-          <input name="salir" value="Salir" class="button" type="submit" />
-        </p>
-      </form>
-    </div>
+      <img class="float-left" src="images/Org_Logo.png" width="89px">
+      <h1 id="logo">DALU<span class="gray"> C.A</span></h1>
+      <h2 id="slogan">Proyecto de Desarrollo Web</h2>
+
+      <div id="loginform">
+        <form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
+          <input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
+          <input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
+        </form>
+      </div>
   </div>
     
   <div id="menu">
     <ul>
-      <li id="current"><a href="#"><span>Inicio</span></a></li>
-      <li><a href="#"><span>Estadistica</span></a></li>
+      <li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+      <li><a href="#"><span class="span_menu">Estadistica</span></a></li>
+      <li style="float: right; margin-right: 20px;"><span class="span_menu">Gerente</span></li>
     </ul>
   </div>
-  <div id="content-wrap">
 
+<div class="body_inside">
+  <div id="content-wrap">
     <div id="main"> 
-      <h1>Atención</h1>
-        
-        <p> Aqui se muestran ciertas estadisticas principales del departamento de <strong>Sistema</strong> </p>
-        
+      <h1>Resumen del Entorno</h1>
+      <p class="p_texto"> Aqui se muestran ciertas estadisticas principales del departamento de <strong>Sistema</strong></p>
         <table>
             <tr> 
                 <th>Campo</th> 
@@ -71,27 +63,18 @@
                 <td>valor</td>
             </tr>
         </table>
-        
-        
-        <p>Elija la estadística que desea consultar desplegando la siguiente lista </p>
-        
-        <select name="est">
-           <option value="1">Por nombre</option> 
-           <option value="2">Por departamento</option> 
-
-        </select>        
-
-        </br></br>
-
-    
-        <p class="post-footer align-right"> <span class="date">Abril 00, 2015</span> </p>
-
-      <br />
     </div>
   </div>
-  <div id="footer">
-    <p> &copy; 2015 <strong>Dalu Company</strong> </p>
+  <div id="content-wrap">
+    <div id="main">
+      <h1>Genere una colsulta</h1>
+      <p class="p_texto">Debajo tiene una lista de consultas, eliga una para generar un reporte en formato PDF.<br>Elija la estadística que desea consultar desplegando la siguiente lista, por:  
+      <select class="select_form_cuerpo glow" name="est">
+         <option value="1">Analista</option> 
+         <option value="2">Departamento</option>
+      </select></p>
+      <input class="button_cuerpo button_whole glow" type="submit" name="consulta" value="Obterner Reporte (PDF)">
+    </div>
   </div>
 </div>
-</body>
-</html>
+</div>

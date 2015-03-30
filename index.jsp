@@ -36,17 +36,17 @@
     <div class="body_inside">
       <div id="content-wrap">
         <div id="main">
-          <h1>Informacion</h1>
-          <p>Sistema para la gestión de siniestros en el area de sistemas de la compañia <strong>DALU C.A</strong></p>
+          <h1>Información</h1>
+          <p class="p_texto">Sistema para la gestión de siniestros en el area de sistemas de la compañia <strong>DALU C.A</strong></p>
           
-          <h1>¿Quienes somos?</h1>
-          <p>Somos una empresa comprometida con lo que hace y brindamos productos de calidad, contamos con experiencian en muchos campos y reunimos mas de 50 años de experiencia en el campo en el que nos desemvolvemos.</p>
+          <h1>¿Quiénes Somos?</h1>
+          <p class="p_texto">Somos una empresa comprometida con lo que hace y brindamos productos de calidad, contamos con experiencian en muchos campos y reunimos mas de 50 años de experiencia en el campo en el que nos desemvolvemos.</p>
         </div>
       </div>
        <div id="content-wrap">
         <div id="main">      
           <h1>Contacto</h1>
-          <p>Sientasé libre de escribirnos a contacto_dalu.ca@dalu.ca.org<br>En cualquier momento le atenderemos.</p>
+          <p class="p_texto">Sientasé libre de escribirnos a contacto_dalu.ca@dalu.ca.org<br>En cualquier momento le atenderemos.</p>
         </div>
       </div>
     </div>
@@ -58,7 +58,11 @@
   <% }
   if("sesion_ana" == session.getAttribute("iniSesion")){ %>
     <%@ include file="analista.html" %>
-  <% } %>
+  <% }
+  if("sesion_gerente" == session.getAttribute("iniSesion")){ %>
+    <%@ include file="gerente.html" %>
+  <% }%>
+  <div>&nbsp;</div>
   <div id="footer">
       <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>
   </div>

@@ -18,11 +18,12 @@
 	<%
 		String var = "sesion_admin";
 		String var2 = "sesion_ana";
+		String var3 = "sesion_gerente";
 
 		out.print(user+pass+"<br>");
 
 		if(user.equals("lperez") && pass.equals("lperez")){
-			session.setAttribute("iniSesion", var2);
+			session.setAttribute("iniSesion", var3);
 			String site = new String("../index.jsp");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location",site);
