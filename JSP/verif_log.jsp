@@ -22,7 +22,7 @@
 		out.print(user+pass+"<br>");
 
 		if(user.equals("lperez") && pass.equals("lperez")){
-			session.setAttribute("iniSesion", var);
+			session.setAttribute("iniSesion", var2);
 			String site = new String("../index.jsp");
 			response.setStatus(response.SC_MOVED_TEMPORARILY);
 			response.setHeader("Location",site);

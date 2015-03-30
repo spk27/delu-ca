@@ -55,6 +55,9 @@
   <% }
   if("sesion_admin" == session.getAttribute("iniSesion")){ %>
     <%@ include file="admin.html" %>
+  <% }
+  if("sesion_ana" == session.getAttribute("iniSesion")){ %>
+    <%@ include file="analista.html" %>
   <% } %>
   <div id="footer">
       <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>

@@ -137,12 +137,12 @@ input.higth_button {
 }
 
 input.small_button {
-	height: 30px;
+	height: 35px;
 	padding: 1px 3px;
-    margin: auto auto auto 1.5em;
-	width: 70px;
-    border-radius: 0.3em; /* Ojo */
-    font: bolder 12px "Lato", Sans-serif; 
+  margin: auto auto auto 1.5em;
+	width: 100%;
+  border-radius: 0.3em; /* Ojo */
+  font: bolder 14px "Lato", Sans-serif; 
 	background: #FFF;
 	color: #275F6C;
 }
@@ -309,35 +309,44 @@ input.small_button {
 /* Tabla */
 
 table{     
-    font-family: "Lato", Sans-Serif;
-    font-size: 12px;   
-    margin: 18px; 
-    width: 480px; 
-    text-align: left; 
-    border-collapse: collapse;
-    box-shadow: 0.1em 0.2em 0.3em #888888;
+	font-family: "Lato", Sans-Serif;
+	font-size: 14px; 
+	width: 100%; 
+	text-align: left; 
+	border-collapse: collapse;
+	box-shadow: 0.1em 0.2em 0.3em #888888;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-th {    
-    font-size: 13px;     
-    padding: 8px;    
-    background: #30899F;  
-    border-bottom: 1px solid #fff;
-    color: #fff;
-    font-weight: Bold;
-    border-radius: 0.5em;
+th {
+	text-align: center;
+	font-size: 15px;     
+	padding: 8px;    
+	background: #26a3e4;  
+	border-bottom: 3px solid #636363;
+	color: #fff;
+	font-weight: Bold;
 }
 
 td {   
     padding: 8px; 
     background: #f2f2f2;    
-    border-bottom: 1px solid #fff;
-    color: #30899F;   
-    border-top: 1px solid transparent; 
-    border-radius: 0.3em;
+    color: #636363;   
+    border-top: 1px solid transparent;
 }
 
-tr:hover td { background: #d0dafd; color: #339; }
+tr:hover td {
+	background: #d0dafd; 
+	color: #339;
+	cursor: pointer;
+}
+
+tr:hover{
+	-webkit-box-shadow: 0px 0px 35px -8px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 35px -8px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 35px -8px rgba(0,0,0,0.5);
+}
 
 /******************************************************************************/
 /******************************************************************************/
@@ -400,7 +409,6 @@ textarea{
 	width: 100%;
 }
 
-
 .button_header{
 	margin-left: 3px;
 	background-color: #636363;
@@ -417,6 +425,7 @@ textarea{
 	color: #FFFFFF;
 	height: 32px;
 	border: none;
+	border-radius: 5px;
 }
 
 .button_header:hover{
@@ -446,4 +455,10 @@ textarea{
 
 li{
 	font-size: 16px;
+}
+
+@media screen and (max-width: 1240px){
+	#content-wrap {
+		width: 100%;
+	}
 }
