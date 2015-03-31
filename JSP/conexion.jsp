@@ -8,14 +8,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="../CSS/style.css" type="text/css" />
-	<link rel="stylesheet" href="../images/dalustyle.css" type="text/css" />
+	<link rel="stylesheet" href="../CSS/dalustyle.css" type="text/css" />
 	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<title>JSP+MySQL Conexión</title>
 </head>
 
 <body>
 	<div id="wrap">
-		<h1 class="conex_ok_title">Estatus de la conexión</h1>
+		<h1 class="conex_ok_title">Estatus de la Conexión</h1>
 		<div class="conex_ok_message">
 			<%
 			try {
