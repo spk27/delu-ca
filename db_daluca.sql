@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-03-2015 a las 16:21:07
+-- Tiempo de generación: 31-03-2015 a las 19:14:17
 -- Versión del servidor: 5.6.22-log
 -- Versión de PHP: 5.4.16
 
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `departamento` (
 --
 
 INSERT INTO `departamento` (`ID_departamento`, `nombre_dpto`, `descripcion`) VALUES
+('DALU_ECO', 'Departamento de Economia y Finanzas', 'El departamento encargado de la administración financiera de esta institución cuyo proposito no se ha definido.'),
 ('DALU_SIS', 'Sistemas e Informatica', 'Gestiona todo lo referente al area de IT de la organización.');
 
 -- --------------------------------------------------------
@@ -75,18 +76,42 @@ CREATE TABLE IF NOT EXISTS `solicitud_ticket` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipos_usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `tipos_usuario` (
+  `id_tipo_usuario` int(11) NOT NULL,
+  `tipo_nombre` varchar(70) NOT NULL,
+  PRIMARY KEY (`id_tipo_usuario`),
+  UNIQUE KEY `id_tipo_usuario` (`id_tipo_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipos_usuario`
+--
+
+INSERT INTO `tipos_usuario` (`id_tipo_usuario`, `tipo_nombre`) VALUES
+(1, 'Administrador'),
+(2, 'Analista'),
+(3, 'Gerente'),
+(4, 'Solicitante');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `tipo_usuario` char(1) NOT NULL,
+  `tipo_usuario` int(11) NOT NULL,
   `cedula` bigint(20) NOT NULL,
   `nombre` varchar(70) NOT NULL,
   `apellido` varchar(70) NOT NULL,
   `ID_usuario` varchar(70) NOT NULL DEFAULT '',
   `ID_password` varchar(70) NOT NULL COMMENT 'constraseña del usuario',
   `fecha_nacimiento` date DEFAULT NULL,
-  PRIMARY KEY (`ID_usuario`)
+  PRIMARY KEY (`ID_usuario`),
+  KEY `tipo_usuario` (`tipo_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -94,7 +119,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`tipo_usuario`, `cedula`, `nombre`, `apellido`, `ID_usuario`, `ID_password`, `fecha_nacimiento`) VALUES
-('1', 19919468, 'Luis', 'Pérez', 'lperez', 'lperez', '1992-03-20');
+(2, 23765789, 'Diana', 'Acevedo', 'dacevedo', 'dacevedo', '2010-08-11'),
+(3, 20938475, 'Daniel', 'Aguilar', 'daguilar', 'daguilar', '2015-03-31'),
+(1, 19919468, 'Luis', 'Pérez', 'lperez', 'lperez', '1992-03-20');
 
 -- --------------------------------------------------------
 
@@ -128,6 +155,8 @@ CREATE TABLE IF NOT EXISTS `usuario_pertenece_departamento` (
 --
 
 INSERT INTO `usuario_pertenece_departamento` (`ID_departamento`, `ID_usuario`) VALUES
+('DALU_ECO', 'daguilar'),
+('DALU_SIS', 'dacevedo'),
 ('DALU_SIS', 'lperez');
 
 -- --------------------------------------------------------
@@ -152,6 +181,12 @@ INSERT INTO `usuario_tiene_telefono` (`ID_usuario`, `telefono`) VALUES
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`tipo_usuario`) REFERENCES `tipos_usuario` (`id_tipo_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario_genera_solicitud`
