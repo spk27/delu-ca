@@ -14,26 +14,13 @@
 </head>
 
 <body>
-	<%
-	/*CONEXION A LA BASE DE DATOS
-	try {
-		String connectionURL = "jdbc:mysql://localhost:3306/db_daluca";
-		Connection connection = null; 
-		Class.forName("com.mysql.jdbc.Driver").newInstance(); 
-		connection = DriverManager.getConnection(connectionURL, "root", "lperez18");
-		if(!connection.isClosed()){
-			out.println("Se ha conectado satisfactoriamente a " + connectionURL);
-			//connection.close();
-		}
-	}*/
-	%>
-
-
+	<!-- PREPARANDO LA CONEXION DE LA BASE DE DATOS
+	EN LA VARIABLE 'snapshot' -->
 	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
     url="jdbc:mysql://localhost/db_daluca"
     user="root"  password="lperez18"/>
 
-
+    <!-- CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
     <sql:query dataSource="${snapshot}" var="result">
     	SELECT * from usuario;
 	</sql:query>
