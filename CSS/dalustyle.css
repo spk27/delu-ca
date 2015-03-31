@@ -10,7 +10,6 @@
 * { margin: 0; padding: 0; }
 
 body {
-	/*background: url(../images/bg.png);*/
 	font-family: 'Lato', sans-serif;
 	font-size: 14px;
 	color: #000; 
@@ -106,6 +105,7 @@ input.button {
 /* login form */
 .p_texto{
 	background-color: #D6D6D6;
+	font-size: 16px;
 }
 
 form.login {
@@ -223,14 +223,58 @@ input.small_button {
 	font-family: "Lato", Sans-Serif;
 	font-weight: 600;
 }
-#menu ul{
+#menu_usuario {
+	box-sizing:border-box;
+	clear: both;
+	width: 100%;
+	height: 40px;
+	background: #FFCC00;
+	margin: 0;
+	padding-left: 30px;
+	font-family: "Lato", Sans-Serif;
+	font-weight: 600;
 }
-#menu ul li {
+#menu_gerente {
+	box-sizing:border-box;
+	clear: both;
+	width: 100%;
+	height: 40px;
+	background: #33CCCC;
+	margin: 0;
+	padding-left: 30px;
+	font-family: "Lato", Sans-Serif;
+	font-weight: 600;
+}
+#menu_analista {
+	box-sizing:border-box;
+	clear: both;
+	width: 100%;
+	height: 40px;
+	background: #666699;
+	margin: 0;
+	padding-left: 30px;
+	font-family: "Lato", Sans-Serif;
+	font-weight: 600;
+}
+#menu_administrador {
+	box-sizing:border-box;
+	clear: both;
+	width: 100%;
+	height: 40px;
+	background: #339966;
+	margin: 0;
+	padding-left: 30px;
+	font-family: "Lato", Sans-Serif;
+	font-weight: 600;
+}
+#menu ul, #menu_usuario ul, #menu_gerente ul, #menu_analista ul, #menu_administrador ul {
+}
+#menu ul li, #menu_usuario ul li, #menu_gerente ul li, #menu_analista ul li, #menu_administrador ul li {
 	box-sizing:border-box;
 	float: left;
 	list-style: none;
 }
-#menu ul li a {
+#menu ul li a, #menu_usuario ul li a, #menu_gerente ul li a, #menu_analista ul li a, #menu_administrador ul li a {
 	font-size: 20px;
 	display: block;
 	padding-left: 10px;
@@ -244,11 +288,11 @@ input.small_button {
 	vertical-align: middle;
 	padding-top: 10px;
 }
-#menu ul li a:hover {
+#menu ul li a:hover, #menu_usuario ul li a:hover, #menu_gerente ul li a:hover, #menu_analista ul li a:hover, #menu_administrador ul li a:hover {
 	background: #636363; 
 	color: #f2f7f9;
 }
-#menu ul li#current a {
+#menu ul li#current a, #menu_usuario ul li#current a, #menu_gerente ul li#current a, #menu_analista ul li#current a, #menu_administrador ul li#current a {
 	box-sizing: border-box;
 	background: #f2f7f9; 
 	color: #26a3e4;
@@ -423,9 +467,9 @@ textarea{
 .button_cuerpo{
 	margin-top: 5px;
 	background-color: #636363;
-	font-size: 16px;
+	font-size: 20px;
 	color: #FFFFFF;
-	height: 32px;
+	height: 35px;
 	border: none;
 	border-radius: 5px;
 }
