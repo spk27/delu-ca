@@ -95,8 +95,7 @@
 
 	<c:if test="${result.rowCount == 0}"> <!-- usuario y vaina mala-->
 		<!-- Mensaje de NO inicio sesión -->
-		<% 
-		session.setAttribute("msjError", "none");
+		<% session.setAttribute("msjError", "none");
 		session.setAttribute("iniSesion", null);
 		String site = new String("../index.jsp");
 		response.setStatus(response.SC_MOVED_TEMPORARILY);

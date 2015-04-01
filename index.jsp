@@ -10,6 +10,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="CSS/dalustyle.css" type="text/css" />
+  <script type="text/javascript" src="JS/jquery-1.11.2.js"></script>
   <title>DALU-CA</title>
 </head>
 
@@ -30,16 +31,16 @@
       <h2 id="slogan">Proyecto de Desarrollo Web</h2>
       
       <div id="loginform">
-        <form method="POST" class="login" action="JSP/verif_log.jsp" autocomplete="off">
+        <form method="POST" class="login" action="JSP/verif_log.jsp" autocomplete="off" id="form-login" name="form-login">
           <p>
-            <input class="input_header glow" name="usu" placeholder="Usuario" type="text" value="" />
-            <input class="input_header glow" name="con" placeholder="Contraseña"  type="password" value="" />
-            <input name="log" value="Entrar" class="button_header button_short glow" type="submit" />
+            <input id="usu" name="usu" class="input_header glow" placeholder="Usuario" type="text" />
+            <input id="con" name="con" class="input_header glow" placeholder="Contraseña"  type="password" />
+            <input type="submit" id="boton-submit" name="boton-submit" value="Entrar" class="button_header button_short glow" />
           </p>
         </form>
       </div>
     </div>
-    
+
     <div id="menu">
       <ul>
         <li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
@@ -67,7 +68,7 @@
   <!-- Fin Sección que mostrar si no ha iniciado sesion -->
   <% }
   if("sesion_admin" == session.getAttribute("iniSesion")){ %>
-    <%@ include file="admin.html" %>
+    <%@ include file="admin.jsp" %>
   <% }
   if("sesion_ana" == session.getAttribute("iniSesion")){ %>
     <%@ include file="analista.html" %>
@@ -82,5 +83,32 @@
   <div id="footer">
       <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>
   </div>
+  lperez - Administrador<br>
+  dacevedo - Analista<br>
+  daguilar - Gerente<br>
+  wflorence  - Solicitante<br>
 </body>
 </html>
+
+<script type="text/javascript">
+    var $form = $("#form-login"),
+        $errorMsg = $("<span class='msjErrorInput'>Campo obligatorio!</span>");
+    $("#boton-submit").on("click", function () {
+        var toReturn = true;
+        $("input", $form).each(function () {
+            if ($(this).val() == "") {
+                if (!$(this).data("error")) {
+                    $(this).data("error", $errorMsg.clone().insertBefore($(this)));
+                }
+                toReturn = false;
+            }
+            else {
+                if ($(this).data("error")) {
+                    $(this).data("error").remove();
+                    $(this).removeData("error");
+                }
+            }
+        });
+        return toReturn;
+    });
+  </script>

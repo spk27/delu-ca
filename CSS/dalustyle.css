@@ -518,6 +518,18 @@ li{
 	padding: 10px;
 }
 
+.msjErrorInput{
+	text-align: center;
+	background-color: #FFFF00;
+	color: black;
+	font-size: 14px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-left: 5px;
+}
+
 @media screen and (max-width: 1258px){
 	#content-wrap {
 		width: 100%;
@@ -530,5 +542,13 @@ li{
 
 	.button_cuerpo{
 		margin-bottom: 15px;
+	}
+	
+	#header {
+		position: relative;
+		width: 100%;
+		background: #26a3e4;
+		margin: 0; padding: 0;
+		font-size: 14px;
 	}
 }

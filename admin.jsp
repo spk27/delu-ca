@@ -62,10 +62,11 @@
 		<div id="content-wrap">
 			<div id="main">         
 			<h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
-			<form method="" name="form2" style="display:block">
-					<label>Matricula a eliminar</label>
-					<input type="text" name="eliMatri" class="input_form_cuerpo glow" size="20"> </br>
-					<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
+			<form method="POST" name="form2">
+				<label>Comentario</label>
+				<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema</p>
+				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow" size="20"> </br>
+				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
 			</form>
 				<script>
 					function hideshow2(){
@@ -79,4 +80,3 @@
 		</div>
 	</div>
 </div>
-
