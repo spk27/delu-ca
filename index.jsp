@@ -1,4 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -12,6 +17,13 @@
   <% if(null == session.getAttribute("iniSesion")){ %>
   <!-- Sección que mostrar si no ha iniciado sesion -->
   <div id="wrap">
+    <!-- paso de mensajes -->
+    <% if("none" == session.getAttribute("msjError")){ %>
+      <div class="msjError">No ha podido ingresar, verifique los datos.</div>
+    <% session.removeAttribute("msjError");
+    } %>
+    <!-- FIN_ paso de mensajes -->
+    
     <div id="header">
       <img class="float-left" src="images/Org_Logo.png" width="89px">
       <h1 id="logo">DALU<span class="gray"> C.A</span></h1>

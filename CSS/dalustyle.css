@@ -508,6 +508,16 @@ li{
 	font-size: 16px;
 }
 
+.msjError{
+	text-align: center;
+	background-color: red;
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	width: 100%;
+	padding: 10px;
+}
+
 @media screen and (max-width: 1258px){
 	#content-wrap {
 		width: 100%;

@@ -14,6 +14,18 @@
 </head>
 
 <body>
+	<%
+	try {
+		String connectionURL = "jdbc:mysql://localhost:3306/db_daluca";
+		Connection connection = null; 
+		Class.forName("com.mysql.jdbc.Driver").newInstance(); 
+		connection = DriverManager.getConnection(connectionURL, "root", "lperez18");
+	}
+	catch(Exception ex){
+		out.println("Algo ha acurrido, no se ha podido conectar a la BD. "+ex);
+	}  
+	%>
+
 	<!-- Para ver acentos -->
 	<%  request.setCharacterEncoding("UTF-8"); %>
 	<!-- Extrayendo los datos del formulario -->
@@ -30,29 +42,6 @@
     <sql:query dataSource="${snapshot}" var="result">
     	SELECT * from usuario where ID_usuario ="<%out.print(user);%>" AND ID_password="<%out.print(pass);%>";
 	</sql:query>
-
-	<table border="1" width="100%">
-		<tr>
-			<th>Emp ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Age</th>
-			<th>Emp ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-		</tr>
-		<c:forEach var="row" items="${result.rows}">
-		<tr>
-			<td><c:out value="${row.tipo_usuario}"/></td>
-			<td><c:out value="${row.cedula}"/></td>
-			<td><c:out value="${row.nombre}"/></td>
-			<td><c:out value="${row.apellido}"/></td>
-			<td><c:out value="${row.ID_usuario}"/></td>
-			<td><c:out value="${row.ID_password}"/></td>
-			<td><c:out value="${row.fecha_nacimiento}"/></td>
-		</tr>
-		</c:forEach>
-	</table>
 
 	<%
 		/*to discrimanate among sessions*/
@@ -102,6 +91,16 @@
 				response.setHeader("Location",site); %>
 			</c:if>
 		</c:forEach>
+	</c:if>
+
+	<c:if test="${result.rowCount == 0}"> <!-- usuario y vaina mala-->
+		<!-- Mensaje de NO inicio sesión -->
+		<% 
+		session.setAttribute("msjError", "none");
+		session.setAttribute("iniSesion", null);
+		String site = new String("../index.jsp");
+		response.setStatus(response.SC_MOVED_TEMPORARILY);
+		response.setHeader("Location",site); %>
 	</c:if>
 
 </body>
