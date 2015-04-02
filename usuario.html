@@ -48,8 +48,8 @@
 					<input class="input_form_cuerpo glow" type="file" size="60" name="file1">
 					
 					<label>Descripción</label>
-					<p class="p_texto" id="p" style="display:none;">Brinde toda la información posible sobre el siniestro. Esto ayadará a nuestros Analista a entender mejor la situación y resolver sin contratiempos el problema.</p>
-					<textarea class="glow" rows="5" cols="5" onfocus="myFunction(p)" onblur="chao(p)"></textarea>
+					<textarea class="glow" rows="5" cols="5" onfocus="hola(p)" onblur="chao(p)"></textarea>
+					<p class="p_info" id="p" style="display:none;">Brinde toda la información posible sobre el siniestro. Esto ayadará a nuestros Analista a entender mejor la situación y resolver sin contratiempos el problema.</p>
 					<input class="button_cuerpo button_whole glow" type="submit" value="enviar">
 				</form>
 			</div>
@@ -101,14 +101,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-function myFunction(x) {
-    document.getElementById(x);
-    x.style.display = "block";
-}
-function chao(x){
-    document.getElementById(x);
-    x.style.display = "none";
-}
-</script>

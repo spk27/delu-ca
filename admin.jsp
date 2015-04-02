@@ -27,10 +27,22 @@
 				<h1 onclick="hideshow();" class="mouse">Registrar usuario</h1>
 				<p class="p_texto">Agregue un nuevo participante al sistema, asignele un rol dentro de la organización. Entre mas usuarios mas ventajas podra obtener de sus enfuerzo conjunto.</p>
 				<form name="form" style="display:block" method="" id="form" onsubmit="return validateForm()" >
-					<label>Usuario: <input type="text" name="usuario" class="input_form_cuerpo glow" size="20"></label>
-					<label>Nombre: <input type="text" name="nombre" class="input_form_cuerpo glow" size="20"></label>
-					<label>Apellido: <input type="text" name="apellido" class="input_form_cuerpo glow" size="20"></label>
-					<label>Cédula: <input type="text" name="cedula" class="input_form_cuerpo glow" size="20"></label>
+					<label>Usuario:
+						<input type="text" name="usuario" class="input_form_cuerpo glow" size="20" onfocus="hola(usu_info)" onblur="chao(usu_info)">
+					</label>
+					<p class="p_info" id="usu_info" style="display:none;">¡<b>Obligatorio</b>! Debe ser único, será una referancia directa de la persona en el sistema.</p>
+					<label>Nombre:
+						<input type="text" name="nombre" class="input_form_cuerpo glow" size="20" onfocus="hola(nom_info)" onblur="chao(nom_info)">
+					</label>
+					<p class="p_info" id="nom_info" style="display:none;">¡<b>Obligatorio</b>! Primer Nombre de la persona.</p>
+					<label>Apellido:
+						<input type="text" name="apellido" class="input_form_cuerpo glow" size="20" onfocus="hola(ape_info)" onblur="chao(ape_info)">
+					</label>
+					<p class="p_info" id="ape_info" style="display:none;">¡<b>Obligatorio</b>! Primer Apellido de la persona.</p>
+					<label>Cédula:
+						<input type="text" name="cedula" class="input_form_cuerpo glow" size="20"onfocus="hola(ced_info)" onblur="chao(ced_info)">
+					</label>
+					<p class="p_info" id="ced_info" style="display:none;">¡<b>Obligatorio</b>! Número de Identificación Personal</p>
 					<label>Tipo de Usuario
 					<select class="select_form_cuerpo glow" name="tipo">
 							<option value="0">Elija Uno</option>

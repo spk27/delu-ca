@@ -143,3 +143,14 @@
     }
 }
 </script>
+<script>
+/*PARA DESPLEGAR LA INFORMACION DE LOS INPUTS*/
+function hola(x) {
+    document.getElementById(x);
+    x.style.display = "block";
+}
+function chao(x){
+    document.getElementById(x);
+    x.style.display = "none";
+}
+</script>
