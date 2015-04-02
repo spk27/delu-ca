@@ -26,7 +26,7 @@
 			<div id="main"> 
 				<h1 onclick="hideshow();" class="mouse">Registrar usuario</h1>
 				<p class="p_texto">Agregue un nuevo participante al sistema, asignele un rol dentro de la organización. Entre mas usuarios mas ventajas podra obtener de sus enfuerzo conjunto.</p>
-				<form name="form" style="display:block" method="" id="form" onsubmit="return validateForm()" >
+				<form name="form" style="display:block" method="POST" action="JSP/nuevo_usuario.jsp" id="form" autocomplete="off" onsubmit="return validateForm()" >
 					<label>Usuario:
 						<input type="text" name="usuario" class="input_form_cuerpo glow" size="20" onfocus="hola(usu_info)" onblur="chao(usu_info)">
 					</label>
@@ -42,7 +42,11 @@
 					<label>Cédula:
 						<input type="text" name="cedula" class="input_form_cuerpo glow" size="20"onfocus="hola(ced_info)" onblur="chao(ced_info)">
 					</label>
-					<p class="p_info" id="ced_info" style="display:none;">¡<b>Obligatorio</b>! Número de Identificación Personal</p>
+					<p class="p_info" id="ced_info" style="display:none;">¡<b>Obligatorio</b>! Número de Identificación Personal. Solo números!!!</p>
+					<label>Fecha de Nacimiento:
+						<input type="text" name="f_nac" class="input_form_cuerpo glow" size="20"onfocus="hola(f_nacimiento)" onblur="chao(f_nacimiento)">
+					</label>
+					<p class="p_info" id="f_nacimiento" style="display:none;">¡<b>Obligatorio</b>! AÑO-MES-DIA, valores numericos estrictamente</p>
 					<label>Tipo de Usuario
 					<select class="select_form_cuerpo glow" name="tipo">
 							<option value="0">Elija Uno</option>
@@ -53,12 +57,17 @@
 					</select></label>
 					<label>Departamento
 					<select class="select_form_cuerpo glow" name="departamento">
-							<option value="0">Elija Uno</option>
-							<option value="1">Sistemas</option> 
-							<option value="2">Ventas</option> 
-							<option value="3">Compras</option>
-							<option value="4">Seguridad</option>
-							<option value="5">Mantenimiento</option>
+						<option value="0">Elija Uno</option>
+						<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+						url="jdbc:mysql://localhost/db_daluca"
+						user="root"  password="lperez18"/>
+						<!-- CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
+						<sql:query dataSource="${snapshot}" var="result">
+						SELECT ID_departamento,nombre_dpto from departamento;
+						</sql:query>
+						<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
+						<option value="<c:out value='${row.ID_departamento}'/>"><c:out value="${row.nombre_dpto}"/></option>
+						</c:forEach>
 					</select></label>
 					<label>Comentario</label>
 					<textarea class="glow" name="comentario" rows="5" cols="5"></textarea>
@@ -71,7 +80,7 @@
 			<div id="main">         
 			<h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
 			<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema. Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
-			<form method="POST" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()">
+			<form method="POST" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
 				<label>Usuario: </label>
 				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow" size="20"> </br>
 				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
@@ -83,50 +92,56 @@
 <script type="text/javascript">
 /*VALIDACIONES DE LOS FORMULARIOS QUE CONTIENE LA PÁGINA ADMIN.JSP*/
 	function validateForm() {
-	    var usuario = document.forms["form"]["usuario"].value;
-	    if (usuario == null || usuario == "") {
-	    	reset();
-			alertify.alert("No has ingresado el <b class='msjError'>\"Usuario\"</b>");
+		var usuario = document.forms["form"]["usuario"].value;
+		if (usuario == null || usuario == "") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>No has proporcionado un nombre de usuario</p>");
 			return false;
-	    }
-	    var nombre = document.forms["form"]["nombre"].value;
-	    if (nombre == null || nombre == "") {
-	    	reset();
-			alertify.alert("No has ingresado el <b class='msjError'>\"Nombre\"</b>");
+		}
+		var nombre = document.forms["form"]["nombre"].value;
+		if (nombre == null || nombre == "") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>No has ingresado en Nombre del usuario.</p>");
 			return false;
-	    }
-	    var apellido = document.forms["form"]["apellido"].value;
-	    if (apellido == null || apellido == "") {
-	    	reset();
-			alertify.alert("No has ingresado el <b class='msjError'>\"Apellido\"</b>");
+		}
+		var apellido = document.forms["form"]["apellido"].value;
+		if (apellido == null || apellido == "") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>No has ingresado un apellido para el usuario.</p>");
 			return false;
-	    }
-	    var cedula = document.forms["form"]["cedula"].value;
-	    if (cedula == null || cedula == "") {
-	    	reset();
-			alertify.alert("No has ingresado el <b class='msjError'>\"Cedula\"</b>");
+		}
+		var cedula = document.forms["form"]["cedula"].value;
+		if (cedula == null || cedula == "") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>Por favor ingresa una cédula. Ej. V-12.345.678 o E-104.456.785</p>");
 			return false;
-	    }
-	    var tipo = document.forms["form"]["tipo"].value;
-	    if (tipo == null || tipo == "Elija Uno") {
-	    	reset();
-			alertify.alert("Debes elegir un cargo para el nuevo usuario.");
+		}
+		var f_nac = document.forms["form"]["f_nac"].value;
+		if (f_nac == null || f_nac == "") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>Falta la Fecha de Nacimiento</p>");
 			return false;
-	    }
-	    var departamento = document.forms["form"]["departamento"].value;
-	    if (departamento == null || departamento == "0") {
-	    	reset();
-			alertify.alert("¿A que <b class='msjError'>departamento</b> pertenece?");
+		}
+		var tipo = document.forms["form"]["tipo"].value;
+		if (tipo == null || tipo == "Elija Uno") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>Elige un cargo para el nuevo usuario</p>");
 			return false;
-	    }
+		}
+		var departamento = document.forms["form"]["departamento"].value;
+		if (departamento == null || departamento == "0") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>Especifica un derpartamento para el nuevo miembro</p>");
+			return false;
+		}
 	}
 
 	function validateFormElim() {
-	    var usuario = document.forms["form2"]["usuario"].value;
-	    if (usuario == null || usuario == "") {
-	    	reset();
-			alertify.alert("Escribe el <b class='msjError'>Usuario</b> del miembro que quieres colocar en estado de inactividad en el sistema.");
+		var usuario = document.forms["form2"]["usuario"].value;
+		if (usuario == null || usuario == "") {
+			reset();
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>Debes especificar un usuario</p>");
 			return false;
-	    }
+		}
 	}
 </script>

@@ -29,26 +29,27 @@
 				<h1 onclick="hideshow();" class="mouse">Reportes</h1>
 				<p class="p_texto">En la opción<strong> Reportes</strong> puede emitir sus solicitudes de incidentes </p>
 
-				<form name="form" style="display:block" method="" enctype="multipart/form-data">
+				<form autocomplete="off" name="form" style="display:block" onsubmit="return validateFormSol()" method="" enctype="multipart/form-data">
 					<label>Prioridad</label>
-					<select class="select_form_cuerpo glow" name="tipo">
-						<option selected>1</option>
-						<option>2</option>
-						<option>3</option>
+					<select class="select_form_cuerpo glow" name="prioridad">
+						<option value="">¿Qué tanta aténción requiere?</option>
+						<option value="1">1 - Máxima</option>
+						<option value="2">2 - Media</option>
+						<option value="3">3 - Baja</option>
 					</select>
-					
 					<label>Tipo</label>
 					<select class="select_form_cuerpo glow" name="tipo">
-						<option selected>Hardware</option>
-						<option>Software</option>
-						<option>Desarrollo</option>
+						<option value=""> Tipo de Siniestro</option>
+						<option value="hardware">Hardware</option>
+						<option value="software">Software</option>
+						<option value="desarrollo">Desarrollo</option>
 					</select>
 
 					<label>Imagen</label>
 					<input class="input_form_cuerpo glow" type="file" size="60" name="file1">
 					
 					<label>Descripción</label>
-					<textarea class="glow" rows="5" cols="5" onfocus="hola(p)" onblur="chao(p)"></textarea>
+					<textarea name="descripcion" class="glow" rows="5" cols="5" onfocus="hola(p)" onblur="chao(p)"></textarea>
 					<p class="p_info" id="p" style="display:none;">Brinde toda la información posible sobre el siniestro. Esto ayadará a nuestros Analista a entender mejor la situación y resolver sin contratiempos el problema.</p>
 					<input class="button_cuerpo button_whole glow" type="submit" value="enviar">
 				</form>
@@ -101,3 +102,25 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+  function validateFormSol() {
+    var y = document.forms["form"]["prioridad"].value;
+    if (y == null || y == "") {
+    	reset();
+    	alertify.alert("<h1>Atención</h1><p class='p_texto'>Indique la gravedad (máxima, media o baja)  del incidente.</p>");
+    return false;
+    }
+    var y = document.forms["form"]["tipo"].value;
+    if (y == null || y == "") {
+    	reset();
+    	alertify.alert("<h1>Atención</h1><p class='p_texto'>Indique que tipo (hardware, software o desarrollo) es el siniestro.</p>");
+    return false;
+    }
+    var x = document.forms["form"]["descripcion"].value;
+    if (x == null || x == "") {
+    	reset();
+    	alertify.alert("<h1>Atención</h1><p class='p_texto'>Proporcione detalles sobre el incidente.</p>");
+    return false;
+    }
+}
+</script>

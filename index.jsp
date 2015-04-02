@@ -3,6 +3,7 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -71,6 +72,16 @@
   </div>
   <!-- Fin Sección que mostrar si no ha iniciado sesion -->
   <% }
+     if("user_existe" == session.getAttribute("msjError")){ %>
+      <div class="msjError">El usuario que está intentando agregar ya está en uso<br>Por favor escoja otro.</div>
+    <% session.removeAttribute("msjError"); }
+    if("user_insertado" == session.getAttribute("msjError")){ %>
+      <div class="msjOK">El usuario ha sido añadido sin problemas a la base de datos.</div>
+    <% session.removeAttribute("msjError"); }
+    if("user_error_param" == session.getAttribute("msjError")){ %>
+      <div class="msjError">Hubo un error en la inserción de los datos. Escribalos como se indica.</div>
+    <% session.removeAttribute("msjError"); }
+  /*FIN _ MENSAJES PARA LOS ERROES DE C.R.U.D */
   if("sesion_admin" == session.getAttribute("iniSesion")){ %>
     <%@ include file="admin.jsp" %>
   <% }

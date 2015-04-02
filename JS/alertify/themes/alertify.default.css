@@ -8,14 +8,18 @@
 	color: #000000;
 }
 .alertify {
-	background: #F2F7F9;
-	border: 10px solid #333; /* browsers that don't support rgba */
-	border: 10px solid rgba(99,99,99,.7);
+	background: #FFFFFF;
+	border: 6px solid #333; /* browsers that don't support rgba */
+	border: 6px solid rgba(99,99,99,.7);
 	border-radius: 10px;
 	box-shadow: 0 3px 3px rgba(0,0,0,.3);
 	-webkit-background-clip: padding;     /* Safari 4? Chrome 6? */
 	   -moz-background-clip: padding;     /* Firefox 3.6 */
 	        background-clip: padding-box; /* Firefox 4, Safari 5, Opera 10, IE 9 */
+}
+.alertify:hover {
+	border: 5px solid #FFFFFF; /* browsers that don't support rgba */
+	border: 6px solid rgba(0,0,0,.7);
 }
 	.alertify-text {
 		border: 1px solid #CCC;
@@ -27,7 +31,9 @@
 		font-size: 16px;
 		border-radius: 4px;
 		color: #FFF;
-		padding: 6px 15px;
+		padding: 4px 20px;
+		margin-top: 10px;
+		width: 20%; 
 		text-decoration: none;
 		text-shadow: 1px 1px 0 rgba(0,0,0,.5);
 		box-shadow: inset 0 1px 0 0 rgba(255,255,255,.5);
@@ -47,7 +53,7 @@
 		background-image:         linear-gradient(top, rgba(0,0,0,.1), rgba(0,0,0,0));
 	}
 	.alertify-button:focus {
-		box-shadow: 0 0 15px #2B72D5;
+		box-shadow: 0 0 15px #FFFFFF;
 	}
 	.alertify-button:active {
 		position: relative;

@@ -71,9 +71,9 @@ acronym {
 /* blockquote */
 blockquote {
 	margin: 10px;
- 	padding: 0 0 0 28px;  
-   border: 1px solid #f2f2f2; 
-  	background: #FAFAFA url(../images/images/quote.gif) no-repeat 5px 5px;    
+	padding: 0 0 0 28px;  
+	border: 1px solid #f2f2f2; 
+	background: #FAFAFA url(../images/images/quote.gif) no-repeat 5px 5px;    
 }
 
 /* form elements */
@@ -521,7 +521,7 @@ li{
 	color: white;
 	font-size: 16px;
 	font-weight: 700;
-	width: 100%;
+	width: auto;
 	padding: 10px;
 }
 
@@ -535,6 +535,16 @@ li{
 	padding-right: 10px;
 	padding-left: 10px;
 	margin-left: 5px;
+}
+
+.msjOK{
+	text-align: center;
+	background-color: green;
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	width: auto;
+	padding: 10px;
 }
 
 @media screen and (max-width: 800px){
