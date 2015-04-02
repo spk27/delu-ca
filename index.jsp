@@ -11,6 +11,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="CSS/dalustyle.css" type="text/css" />
   <script type="text/javascript" src="JS/jquery-1.11.2.js"></script>
+  <link rel="stylesheet" href="JS/alertify/themes/alertify.core.css" />
+  <link rel="stylesheet" href="JS/alertify/themes/alertify.default.css" id="toggleCSS" />
+  <meta name="viewport" content="width=device-width">
   <title>DALU-CA</title>
 </head>
 
@@ -31,7 +34,7 @@
       <h2 id="slogan">Proyecto de Desarrollo Web</h2>
       
       <div id="loginform">
-        <form method="POST" class="login" action="JSP/verif_log.jsp" autocomplete="off" id="form-login" name="form-login">
+        <form method="POST" class="login" action="JSP/verif_log.jsp" autocomplete="off" id="form-login" name="form-login" onsubmit="return validateFormIndex()">
           <p>
             <input id="usu" name="usu" class="input_header glow" placeholder="Usuario" type="text" />
             <input id="con" name="con" class="input_header glow" placeholder="Contraseña"  type="password" />
@@ -91,24 +94,53 @@
 </html>
 
 <script type="text/javascript">
-    var $form = $("#form-login"),
-        $errorMsg = $("<span class='msjErrorInput'>Campo obligatorio!</span>");
-    $("#boton-submit").on("click", function () {
-        var toReturn = true;
-        $("input", $form).each(function () {
-            if ($(this).val() == "") {
-                if (!$(this).data("error")) {
-                    $(this).data("error", $errorMsg.clone().insertBefore($(this)));
-                }
-                toReturn = false;
-            }
-            else {
-                if ($(this).data("error")) {
-                    $(this).data("error").remove();
-                    $(this).removeData("error");
-                }
-            }
-        });
-        return toReturn;
-    });
+    /*
+    Funciones para ocultar formularios los que la quieran implementar
+    deben tener style diplay:block y name = form i from2
+    */
+    function hideshow(){
+      var frm=document.form;
+      if(frm.style.display=="block"){frm.style.display="none"}
+      else
+      if(frm.style.display=="none"){frm.style.display="block"}
+    };
+
+    function hideshow2(){
+      var frm=document.form2;
+      if(frm.style.display=="block"){frm.style.display="none"}
+      else
+      if(frm.style.display=="none"){frm.style.display="block"}
+    };
+
   </script>
+  <script src="JS/alertify/lib/alertify.min.js"></script>
+  <script>
+    function reset () {
+      $("#toggleCSS").attr("href", "JS/alertify/themes/alertify.default.css");
+      alertify.set({
+        labels : {
+          ok     : "OK",
+          cancel : "Cancel"
+        },
+        delay : 5000,
+        buttonReverse : false,
+        buttonFocus   : "ok"
+      });
+    }
+  </script>
+<script type="text/javascript">
+  function validateFormIndex() {
+    var x = document.forms["form-login"]["usu"].value;
+    if (x == null || x == "") {
+      reset();
+    alertify.alert("No has ingresado el \"usuario\"");
+    return false;
+    }
+    var y = document.forms["form-login"]["con"].value;
+    if (y == null || y == "") {
+      reset();
+    alertify.alert("No has ingresado la \"Contraseña\"");
+    return false;
+    }
+}
+</script>

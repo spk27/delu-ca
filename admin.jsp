@@ -25,8 +25,9 @@
 		<div id="content-wrap">
 			<div id="main"> 
 				<h1 onclick="hideshow();" class="mouse">Registrar usuario</h1>
-				<form name="form" style="display:block" method="" >
-							<label>Matricula: <input type="text" name="matricula" class="input_form_cuerpo glow" size="20"></label>
+				<p class="p_texto">Agregue un nuevo participante al sistema, asignele un rol dentro de la organización. Entre mas usuarios mas ventajas podra obtener de sus enfuerzo conjunto.</p>
+				<form name="form" style="display:block" method="" id="form" onsubmit="return validateForm()">
+							<label>Usuario: <input type="text" name="usuario" class="input_form_cuerpo glow" size="20"></label>
 							<label>Nombre: <input type="text" name="nombre" class="input_form_cuerpo glow" size="20"></label>
 							<label>Apellido: <input type="text" name="apellido" class="input_form_cuerpo glow" size="20"></label>
 							<label>Cédula: <input type="text" name="cedula" class="input_form_cuerpo glow" size="20"></label>
@@ -47,36 +48,31 @@
 							</select></label>
 							<label>Comentario</label>
 							<textarea class="glow" name="comentario" rows="5" cols="5"></textarea>
-							<input class="button_cuerpo button_whole glow" type="submit" value="enviar">
+							<input name="submit_registro" id="submit_registro" class="button_cuerpo button_whole glow" type="submit" value="enviar">
 				</form>
-				<script>
-					function hideshow(){
-					var frm=document.form;
-					if(frm.style.display=="block"){frm.style.display="none"}
-					else
-					if(frm.style.display=="none"){frm.style.display="block"}
-					}
-				</script>
 			</div>
 		</div>
+
 		<div id="content-wrap">
 			<div id="main">         
 			<h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
-			<form method="POST" name="form2">
-				<label>Comentario</label>
-				<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema</p>
+			<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema. Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
+			<form method="POST" name="form2" id="form2" style="display:block">
+				<label>Usuario: </label>
 				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow" size="20"> </br>
 				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
 			</form>
-				<script>
-					function hideshow2(){
-					var aux=document.form2;
-					if(aux.style.display=="block"){aux.style.display="none"}
-					else
-					if(aux.style.display=="none"){aux.style.display="block"}
-					}
-				</script>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function validateForm() {
+    var x = document.forms["form"]["usuario"].value;
+    if (x == null || x == "") {
+    	reset();
+		alertify.alert("No has ingresado el \"usuario\"");
+		return false;
+    }
+}
+</script>

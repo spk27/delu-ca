@@ -530,7 +530,7 @@ li{
 	margin-left: 5px;
 }
 
-@media screen and (max-width: 1258px){
+@media screen and (max-width: 800px){
 	#content-wrap {
 		width: 100%;
 	}
