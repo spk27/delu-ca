@@ -1,102 +1,114 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div id="wrap">
-  <div id="header">
-      <img class="float-left" src="images/Org_Logo.png" width="89px">
-      <h1 id="logo">DALU<span class="gray"> C.A</span></h1>
-      <h2 id="slogan">Proyecto de Desarrollo Web</h2>
+	<div id="header">
+		<img class="float-left" src="images/Org_Logo.png" width="89px">
+		<h1 id="logo">DALU<span class="gray"> C.A</span></h1>
+		<h2 id="slogan">Proyecto de Desarrollo Web</h2>
 
-      <div id="loginform">
-        <form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
-          <input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
-          <input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
-        </form>
-      </div>
-  </div>
-    
-  <div id="menu_usuario">
-    <ul>
-      <li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
-      <li><a href="#"><span class="span_menu">Reportar</span></a></li>
-      <li><a href="#"><span class="span_menu">Consultar</span></a></li>
-      <li style="float: right; margin-right: 20px;"><span class="span_menu">Solicitante</span></li>
-    </ul>
-  </div>
+		<div id="loginform">
+			<form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
+				<input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
+				<input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
+			</form>
+		</div>
+	</div>
 
-  <div class="body_inside">
-    <div id="content-wrap">
-      <div id="main"> 
-        <h1 onclick="hideshow();" class="mouse">Reportes</h1>
-        <p class="p_texto">En la opción<strong> Reportes</strong> puede emitir sus solicitudes de incidentes </p>
+	<div id="menu_usuario">
+		<ul>
+			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+			<li><a href="#"><span class="span_menu">Reportar</span></a></li>
+			<li><a href="#"><span class="span_menu">Consultar</span></a></li>
+			<li style="float: right; margin-right: 20px;"><span class="span_menu">Solicitante</span></li>
+		</ul>
+	</div>
 
-        <form name="form" style="display:block" method="" enctype="multipart/form-data">
-          <label>Prioridad</label>
-          <select class="select_form_cuerpo glow" name="tipo">
-              <option selected>1</option>
-              <option>2</option>
-              <option>3</option>
-          </select>
-          
-          <label>Tipo</label>
-          <select class="select_form_cuerpo glow" name="tipo">
-              <option selected>Hardware</option>
-              <option>Software</option>
-              <option>Desarrollo</option>
-          </select>
+	<div class="body_inside">
+		<div id="content-wrap">
+			<div id="main"> 
+				<h1 onclick="hideshow();" class="mouse">Reportes</h1>
+				<p class="p_texto">En la opción<strong> Reportes</strong> puede emitir sus solicitudes de incidentes </p>
 
-          <label>Imagen</label>
-          <input class="input_form_cuerpo glow" type="file" size="60" name="file1">
-          
-          <label>Comentario</label>
-          <textarea class="glow" rows="5" cols="5"></textarea>
-          <input class="button_cuerpo button_whole glow" type="submit" value="enviar">
-        </form>
-      </div>
-    </div>
-    <div id="content-wrap">
-      <div id="main"> 
-        <h1 onclick="hideshow2();" class="mouse">Consultar</h1>
-        <p class="p_texto">Como tambien puede <strong>Consultar</strong> el estado sus solicitudes ya emitidas</p>
-        <form method="" name="form2" style="display:block">
-          <table>
-            <tr> 
-              <th></th>
-              <th>N#</th>
-              <th>Fecha</th>
-              <th>Prioridad</th>
-              <th>Tipo</th>
-              <th>Usuario</th>
-              <th>Estado</th>
-              <th>Imagen</th>
-              <th>Comentario</th>
-            </tr>
-            <tr> 
-              <td><input type="radio" name="s1" value="1"></td>
-              <td>#1111</td> 
-              <td>17-03</td> 
-              <td>3</td>
-              <td>Hardware</td>
-              <td>daguilar</td>
-              <td>pverde</td>
-              <td class="imagen"></td>
-              <td class="coments"><a href="#">Abrir</a></td>
-            </tr>
-            <tr> 
-              <td><input type="radio" name="s1" value="3"></td>
-              <td>#3333</td>
-              <td>17-03</td>
-              <td>1</td>
-              <td>Software</td>
-              <td>lperez</td>
-              <td>projo</td>
-              <td class="imagen"></td>
-              <td class="coments"><a href="#">Abrir</a></td>
-            </tr>
-          </table> 
-          <p class="p_texto">Finaliza su solicitud, seleccionela y <strong>Califiquela</strong> </p>
-          <input class="button_cuerpo button_whole glow" name="calificar" value="calificar"  type="submit" />
-        </form>
-      </div>
-    </div>
-  </div>
+				<form name="form" style="display:block" method="" enctype="multipart/form-data">
+					<label>Prioridad</label>
+					<select class="select_form_cuerpo glow" name="tipo">
+						<option selected>1</option>
+						<option>2</option>
+						<option>3</option>
+					</select>
+					
+					<label>Tipo</label>
+					<select class="select_form_cuerpo glow" name="tipo">
+						<option selected>Hardware</option>
+						<option>Software</option>
+						<option>Desarrollo</option>
+					</select>
+
+					<label>Imagen</label>
+					<input class="input_form_cuerpo glow" type="file" size="60" name="file1">
+					
+					<label>Descripción</label>
+					<p class="p_texto" id="p" style="display:none;">Brinde toda la información posible sobre el siniestro. Esto ayadará a nuestros Analista a entender mejor la situación y resolver sin contratiempos el problema.</p>
+					<textarea class="glow" rows="5" cols="5" onfocus="myFunction(p)" onblur="chao(p)"></textarea>
+					<input class="button_cuerpo button_whole glow" type="submit" value="enviar">
+				</form>
+			</div>
+		</div>
+		<div id="content-wrap">
+			<div id="main"> 
+				<h1 onclick="hideshow2();" class="mouse">Consultar</h1>
+				<p class="p_texto">Como tambien puede <strong>Consultar</strong> el estado sus solicitudes ya emitidas</p>
+				<form method="" name="form2" style="display:block">
+					<table>
+						<tr> 
+							<th></th>
+							<th>N#</th>
+							<th>Fecha</th>
+							<th>Prioridad</th>
+							<th>Tipo</th>
+							<th>Usuario</th>
+							<th>Estado</th>
+							<th>Imagen</th>
+							<th>Comentario</th>
+						</tr>
+						<tr> 
+							<td><input type="radio" name="s1" value="1"></td>
+							<td>#1111</td> 
+							<td>17-03</td> 
+							<td>3</td>
+							<td>Hardware</td>
+							<td>daguilar</td>
+							<td>pverde</td>
+							<td class="imagen"></td>
+							<td class="coments"><a href="#">Abrir</a></td>
+						</tr>
+						<tr> 
+							<td><input type="radio" name="s1" value="3"></td>
+							<td>#3333</td>
+							<td>17-03</td>
+							<td>1</td>
+							<td>Software</td>
+							<td>lperez</td>
+							<td>projo</td>
+							<td class="imagen"></td>
+							<td class="coments"><a href="#">Abrir</a></td>
+						</tr>
+					</table> 
+					<p class="p_texto">Finaliza su solicitud, seleccionela y <strong>Califiquela</strong> </p>
+					<input class="button_cuerpo button_whole glow" name="calificar" value="calificar"  type="submit" />
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
+
+<script>
+function myFunction(x) {
+    document.getElementById(x);
+    x.style.display = "block";
+}
+function chao(x){
+    document.getElementById(x);
+    x.style.display = "none";
+}
+</script>

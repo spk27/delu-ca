@@ -1,5 +1,5 @@
-@import url(../images/http://fonts.googleapis.com/css?family=Oswald);
-@import url(../images/http://fonts.googleapis.com/css?family=Lato:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
 
 #inside{
 	margin-top: 10px;
@@ -367,19 +367,20 @@ table{
 
 th {
 	text-align: center;
-	font-size: 15px;     
-	padding: 8px;    
+	font-size: 14px;     
+	padding: 5px;    
 	background: #26a3e4;  
 	border-bottom: 3px solid #636363;
 	color: #fff;
 	font-weight: Bold;
+	height: 30px;
 }
 
 td {   
-    padding: 8px; 
-    background-color: #FFFFFF;    
-    color: #000000;   
-    border-top: 1px solid #636363;
+	padding: 5px; 
+	background-color: #FFFFFF;    
+	color: #000000;   
+	border-top: 1px solid #636363;
 }
 
 tr:hover td {
@@ -550,5 +551,21 @@ li{
 		background: #26a3e4;
 		margin: 0; padding: 0;
 		font-size: 14px;
+	}
+}
+
+@media screen and (max-width:1107px){
+	th {
+		max-width: 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	td {   
+		max-width: 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 }

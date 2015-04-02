@@ -96,7 +96,7 @@
 <script type="text/javascript">
     /*
     Funciones para ocultar formularios los que la quieran implementar
-    deben tener style diplay:block y name = form i from2
+    deben tener style diplay:block y name = form y from2
     */
     function hideshow(){
       var frm=document.form;
@@ -111,10 +111,9 @@
       else
       if(frm.style.display=="none"){frm.style.display="block"}
     };
-
-  </script>
-  <script src="JS/alertify/lib/alertify.min.js"></script>
-  <script>
+</script>
+<script src="JS/alertify/lib/alertify.min.js"></script>
+<script>
     function reset () {
       $("#toggleCSS").attr("href", "JS/alertify/themes/alertify.default.css");
       alertify.set({

@@ -24,56 +24,61 @@
 <div class="body_inside">
   <div id="content-wrap">
     <div id="main"> 
-      <h1>Resumen del Entorno</h1>
+      <h1 onclick="hideshow();" class="mouse">Resumen del Entorno</h1>
       <p class="p_texto"> Aqui se muestran ciertas estadisticas principales del departamento de <strong>Sistema</strong></p>
-        <table>
-            <tr> 
-                <th>Campo</th> 
-                <th>campo</th>
-                <th>campo</th>
-                <th>campo</th>
-                <th>campo</th>
-            </tr>
-            <tr> 
-                <td>campo</td> 
-                <td>valor</td> 
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-            </tr>
-            <tr> 
-                <td>campo</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>   
-                <td>valor</td>
-            </tr>
-            <tr> 
-                <td>campo</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-            </tr>
-            <tr> 
-                <td>campo</td>
-                <td>valor</td> 
-                <td>valor</td>
-                <td>valor</td>
-                <td>valor</td>
-            </tr>
-        </table>
+        <form name="form" style="display:block" method="" id="form" >
+          <table>
+              <tr> 
+                  <th>Campo</th> 
+                  <th>campo</th>
+                  <th>campo</th>
+                  <th>campo</th>
+                  <th>campo</th>
+              </tr>
+              <tr> 
+                  <td>campo</td> 
+                  <td>valor</td> 
+                  <td>valor</td>
+                  <td>valor</td>
+                  <td>valor</td>
+              </tr>
+              <tr> 
+                  <td>campo</td>
+                  <td>valor</td>
+                  <td>valor</td>
+                  <td>valor</td>   
+                  <td>valor</td>
+              </tr>
+              <tr> 
+                  <td>campo</td>
+                  <td>valor</td>
+                  <td>valor</td>
+                  <td>valor</td>
+                  <td>valor</td>
+              </tr>
+              <tr> 
+                  <td>campo</td>
+                  <td>valor</td> 
+                  <td>valor</td>
+                  <td>valor</td>
+                  <td>valor</td>
+              </tr>
+          </table>
+        </from>
     </div>
   </div>
   <div id="content-wrap">
     <div id="main">
-      <h1>Genere una colsulta</h1>
-      <p class="p_texto">Debajo tiene una lista de consultas, eliga una para generar un reporte en formato PDF.<br>Elija la estadística que desea consultar desplegando la siguiente lista, por:  
-      <select class="select_form_cuerpo glow" name="est">
-         <option value="1">Analista</option> 
-         <option value="2">Departamento</option>
-      </select></p>
-      <input class="button_cuerpo button_whole glow" type="submit" name="consulta" value="Obterner Reporte (PDF)">
+      <h1 onclick="hideshow2();" class="mouse">Genere una colsulta</h1>
+        <form method="POST" name="form2" id="form2" style="display:block">
+          <p class="p_texto">Debajo tiene una lista de consultas, eliga una para generar un reporte en formato PDF.<br>Elija la estadística que desea consultar desplegando la siguiente lista, por:  
+            <select class="select_form_cuerpo glow" name="est">
+              <option value="1">Analista</option> 
+              <option value="2">Departamento</option>
+            </select>
+          </p>
+        <input class="button_cuerpo button_whole glow" type="submit" name="consulta" value="Obterner Reporte (PDF)">
+      </form>
     </div>
   </div>
 </div>
