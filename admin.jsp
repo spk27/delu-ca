@@ -30,7 +30,7 @@
 					<label>Usuario:
 						<input type="text" name="usuario" class="input_form_cuerpo glow" size="20" onfocus="hola(usu_info)" onblur="chao(usu_info)">
 					</label>
-					<p class="p_info" id="usu_info" style="display:none;">¡<b>Obligatorio</b>! Debe ser único, será una referancia directa de la persona en el sistema.</p>
+					<p class="p_info" id="usu_info" style="display:none;">¡<b>Obligatorio</b>! Debe ser único, será una referancia directa de la persona en el sistema.<br>El mismo no debe contener espacios.</p>
 					<label>Nombre:
 						<input type="text" name="nombre" class="input_form_cuerpo glow" size="20" onfocus="hola(nom_info)" onblur="chao(nom_info)">
 					</label>
