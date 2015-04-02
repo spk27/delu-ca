@@ -9,6 +9,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="shortcut icon" href="images/Org_Logo.png">
   <link rel="stylesheet" href="CSS/dalustyle.css" type="text/css" />
   <script type="text/javascript" src="JS/jquery-1.11.2.js"></script>
   <link rel="stylesheet" href="JS/alertify/themes/alertify.core.css" />
