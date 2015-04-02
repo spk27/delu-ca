@@ -371,15 +371,14 @@ table{
 	border: solid 1px #636363;
 }
 
-th {
-	text-align: center;
+th{
 	font-size: 14px;     
-	padding: 5px;    
+	padding-left: 10px;
 	background: #26a3e4;  
 	border-bottom: 3px solid #636363;
 	color: #fff;
 	font-weight: Bold;
-	height: 30px;
+	height: 40px;
 }
 
 td {   
@@ -415,10 +414,13 @@ tr:hover{
 /******************************************************************************/
 /******************************************************************************/
 input, textarea, select{
-	border: solid 1px #26a3e4;
 	color: #000000;
 	font-size: 15px;
 	margin-top: 2px;
+	
+	border:solid 1px #28a8e0;
+  border-radius: 5px;
+  padding:7px 14px;
 }
 
 input{
@@ -445,15 +447,15 @@ textarea{
 }
 
 .input_form_cuerpo{
-	padding: 3px;
+	padding:7px 14px;
 	font-family: "Lato", sans-serif;
 	font-size: 14px;
 	color: #000000;
-	width: 99%;
+	width: 96%;
 }
 
 .select_form_cuerpo{
-	padding: 3px;
+	padding:7px 14px;
 	margin-left: 0px;
 	height: 34px;
 	font-family: "Lato", sans-serif;
@@ -467,18 +469,21 @@ textarea{
 	background-color: #636363;
 	font-size: 16px;
 	color: #FFFFFF;
-	height: 32px;
+	height: 40px;
 	border: none;
 }
 
 .button_cuerpo{
 	margin-top: 5px;
 	background-color: #636363;
-	font-size: 20px;
+	font-size: 17px;
 	color: #FFFFFF;
-	height: 35px;
+	height: 40px;
 	border: none;
-	border-radius: 5px;
+	border-radius: 6px;
+	font-variant-caps: petite-caps;
+	font-weight: 700;
+	padding:8px 10px;
 }
 
 .button_cuerpo:hover{
@@ -502,7 +507,6 @@ textarea{
 
 .button_whole{
 	width: 100%;
-	font-variant: small-caps;
 }
 
 .glow:hover{

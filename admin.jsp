@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<script type="text/javascript" src="JS/list.js"></script>
+  <link rel="stylesheet" href="CSS/list.css" type="text/css" />
+
 <div id="wrap"> 
 	<div id="header">
 			<img class="float-left" src="images/Org_Logo.png" width="89px">
@@ -58,6 +61,7 @@
 					<label>Departamento
 					<select class="select_form_cuerpo glow" name="departamento">
 						<option value="0">Elija Uno</option>
+						<!-- ******************* ********************* ******************** -->
 						<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 						url="jdbc:mysql://localhost/db_daluca"
 						user="root"  password="lperez18"/>
@@ -68,6 +72,7 @@
 						<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
 						<option value="<c:out value='${row.ID_departamento}'/>"><c:out value="${row.nombre_dpto}"/></option>
 						</c:forEach>
+						<!-- ******************* ********************* ******************** -->
 					</select></label>
 					<label>Comentario</label>
 					<textarea class="glow" name="comentario" rows="5" cols="5"></textarea>
@@ -81,14 +86,56 @@
 			<h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
 			<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema. Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
 			<form method="POST" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
+
+				<!-- ******************* ********************* ******************** -->
+				<!-- snapshot tiene la conexión CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
+				<sql:query dataSource="${snapshot}" var="result">
+					SELECT * from db_daluca.usuario;
+				</sql:query>
+				<div id="users">
+				<input class="search glow" placeholder="Filtrar Usuarios" />
+				<input type="button" value="Ordena por User" class="sort" data-sort="name">
+				<div style="display:block; max-height:200px; overflow-y: auto;"><table>
+					<tr>
+						<th>Nombre</th>
+						<th>Usuario</th>
+						<th>Estatus</th>
+					</tr>
+					<!-- IMPORTANT, class="list" have to be at tbody -->
+					
+					<tbody class="list">
+						<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
+						<tr>
+							<td class="born"><c:out value="${row.apellido}"/>, <c:out value='${row.nombre}'/></td>
+							<td class="name"><c:out value='${row.ID_usuario}'/></td>
+							<td><c:out value="${row.estatus}"/></td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table></div>
+
+				</div>
+				<script type="text/javascript">
+					var options = {
+					valueNames: [ 'name', 'born' ]
+					};
+
+					var userList = new List('users', options);
+				</script>
+
+
+
 				<label>Usuario: </label>
-				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow" size="20"> </br>
+				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow" size="20">
 				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
 			</form>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	
+</script>
 <script type="text/javascript">
 /*VALIDACIONES DE LOS FORMULARIOS QUE CONTIENE LA PÁGINA ADMIN.JSP*/
 	function validateForm() {
