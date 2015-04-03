@@ -94,7 +94,7 @@
 				</sql:query>
 				<div id="users">
 				<input class="search glow" placeholder="Filtrar Usuarios" />
-				<input type="button" value="Ordena por User" class="sort" data-sort="name">
+				<!--<input type="button" value="Ordena por User" class="sort" data-sort="name">-->
 				<div style="display:block; max-height:200px; overflow-y: auto;"><table>
 					<tr>
 						<th>Nombre</th>
@@ -126,7 +126,7 @@
 
 
 				<label>Usuario: </label>
-				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow" size="20">
+				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow">
 				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
 			</form>
 			</div>
