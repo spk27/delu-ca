@@ -98,10 +98,6 @@
   <div id="footer">
       <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>
   </div>
-  lperez - Administrador<br>
-  dacevedo - Analista<br>
-  daguilar - Gerente<br>
-  wflorence  - Solicitante<br>
 </body>
 </html>
 
