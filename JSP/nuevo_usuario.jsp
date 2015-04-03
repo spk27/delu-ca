@@ -35,10 +35,6 @@
 			<%
 			Connection connection = null;
 			Statement  stmt = null;
-			PreparedStatement ps = null;
-
-			String queryPerson = new String(); //Query statement
-			String queryUserInfo = new String();
 			String queryAccount = new String();
 
 			/*CONEXION A LA BASE DE DATOS DE OTRA FORMA*/

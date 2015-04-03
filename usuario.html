@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <div id="wrap">
@@ -19,7 +20,7 @@
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
 			<li><a href="#"><span class="span_menu">Reportar</span></a></li>
 			<li><a href="#"><span class="span_menu">Consultar</span></a></li>
-			<li style="float: right; margin-right: 20px;"><span class="span_menu">Solicitante</span></li>
+			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>,Solicitante</span></li>
 		</ul>
 	</div>
 

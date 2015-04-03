@@ -20,7 +20,7 @@
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
 			<li><a href="#"><span class="span_menu">Administrar</span></a></li>
-			<li style="float: right; margin-right: 20px;"><span class="span_menu">Administrador</span></li>
+			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Administrador</span></li>
 		</ul>
 	</div>
 	
@@ -85,8 +85,7 @@
 			<div id="main">         
 			<h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
 			<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema. Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
-			<form method="POST" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
-
+			<form method="POST" action="JSP/eliminar_usuario.jsp" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
 				<!-- ******************* ********************* ******************** -->
 				<!-- snapshot tiene la conexión CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
 				<sql:query dataSource="${snapshot}" var="result">
@@ -95,7 +94,8 @@
 				<div id="users">
 				<input class="search glow" placeholder="Filtrar Usuarios" />
 				<!--<input type="button" value="Ordena por User" class="sort" data-sort="name">-->
-				<div style="display:block; max-height:200px; overflow-y: auto;"><table>
+				<div style="display:block; max-height:200px; overflow-y: auto; margin-bottom:10px;">
+				<table>
 					<tr>
 						<th>Nombre</th>
 						<th>Usuario</th>
@@ -106,25 +106,22 @@
 					<tbody class="list">
 						<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
 						<tr>
-							<td class="born"><c:out value="${row.apellido}"/>, <c:out value='${row.nombre}'/></td>
-							<td class="name"><c:out value='${row.ID_usuario}'/></td>
-							<td><c:out value="${row.estatus}"/></td>
+							<td class="name"><c:out value='${row.nombre}'/> <c:out value="${row.apellido}"/></td>
+							<td class="iduser"><c:out value='${row.ID_usuario}'/></td>
+							<td class="estatus"><c:out value="${row.estatus}"/></td>
 						</tr>
 						</c:forEach>
 					</tbody>
-				</table></div>
-
+				</table>
+				</div>
 				</div>
 				<script type="text/javascript">
 					var options = {
-					valueNames: [ 'name', 'born' ]
+					valueNames: [ 'name', 'iduser', 'estatus' ]
 					};
 
 					var userList = new List('users', options);
 				</script>
-
-
-
 				<label>Usuario: </label>
 				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow">
 				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
@@ -133,9 +130,6 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	
-</script>
 <script type="text/javascript">
 /*VALIDACIONES DE LOS FORMULARIOS QUE CONTIENE LA PÁGINA ADMIN.JSP*/
 	function validateForm() {

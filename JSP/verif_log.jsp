@@ -62,7 +62,19 @@
 	%>
 
 	<c:if test="${result.rowCount > 0}"> <!-- hay al menos uno-->
+		<%
+		/*	como esta registrado guardo su usuario para que notrate de ponerse inactivo el mismo y cosas asi*/
+		session.setAttribute("ID_Usuario", user);
+		%>
 		<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
+			<c:if test="${row.estatus == 'Inactivo'}">
+				<% session.setAttribute("msjError", "inactivo");
+				session.setAttribute("iniSesion", null);
+				String site = new String("../index.jsp");
+				response.setStatus(response.SC_MOVED_TEMPORARILY);
+				response.setHeader("Location",site); %>
+				<c:remove var="row" />
+			</c:if>
 			<c:set var="tipo_usuario" value="${row.tipo_usuario}"/><!--extraigo el tipo_usuario-->
 			<c:if test="${tipo_usuario == 1}">Administrador
 				<% session.setAttribute("iniSesion", var);

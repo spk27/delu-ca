@@ -27,6 +27,10 @@
     <% if("none" == session.getAttribute("msjError")){ %>
       <div class="msjError">No ha podido ingresar, verifique los datos.</div>
     <% session.removeAttribute("msjError");
+    }
+    if("inactivo" == session.getAttribute("msjError")){ %>
+      <div class="msjError">Has sido puesto como inactivo. Comunicate con un administrador para modificar el acceso al sistema.</div>
+    <% session.removeAttribute("msjError");
     } %>
     <!-- FIN_ paso de mensajes -->
     
@@ -74,13 +78,34 @@
   <% }
      if("user_existe" == session.getAttribute("msjError")){ %>
       <div class="msjError">El usuario que está intentando agregar ya está en uso<br>Por favor escoja otro.</div>
-    <% session.removeAttribute("msjError"); }
+      <% session.removeAttribute("msjError");
+    }
+
     if("user_insertado" == session.getAttribute("msjError")){ %>
-      <div class="msjOK">El usuario ha sido añadido sin problemas a la base de datos.</div>
-    <% session.removeAttribute("msjError"); }
+      <div class="msjOK">Se ha añadido satisfactoriamente al nmuevo usuario.</div>
+      <% session.removeAttribute("msjError");
+    }
+
     if("user_error_param" == session.getAttribute("msjError")){ %>
       <div class="msjError">Hubo un error en la inserción de los datos. Escribalos como se indica.</div>
-    <% session.removeAttribute("msjError"); }
+      <% session.removeAttribute("msjError"); 
+    }
+    
+    if("error_eliminar" == session.getAttribute("msjEliminar")){ %>
+      <div class="msjError">Parece que el usuario que ha indicado no existe<br>o lo ha escrito de manerea incorrecta.</div>
+      <% session.removeAttribute("msjEliminar"); 
+    }
+
+    if("msjOK" == session.getAttribute("msjEliminar")){ %>
+      <div class="msjOK">Se ha colocado como Inactivo al usuario.</div>
+      <% session.removeAttribute("msjEliminar"); 
+    }
+
+    if("mismo" == session.getAttribute("msjEliminar")){ %>
+      <div class="msjError">No puedes colocarte inactivo a ti mismo.</div>
+      <% session.removeAttribute("msjEliminar"); 
+    }
+
   /*FIN _ MENSAJES PARA LOS ERROES DE C.R.U.D */
   if("sesion_admin" == session.getAttribute("iniSesion")){ %>
     <%@ include file="admin.jsp" %>
