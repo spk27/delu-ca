@@ -19,7 +19,6 @@
 	<div id="menu_administrador">
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
-			<li><a href="#"><span class="span_menu">Administrar</span></a></li>
 			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Administrador</span></li>
 		</ul>
 	</div>
@@ -83,8 +82,9 @@
 
 		<div id="content-wrap">
 			<div id="main">         
-			<h1 onclick="hideshow2();" class="mouse">Eliminar Usuario</h1>
-			<p class="p_texto">Está opción, inabilitará al usuario para que no pueda ingresar al sistema. Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
+			<h1 onclick="hideshow2();" class="mouse">Inhabilitar/Habilitar Usuario</h1>
+			<p class="p_texto">
+				Esta opción permite administrar el acceso de los usuarios al sistema. Escriba el usuario de cualquier miembro del sistema para cambiar su acceso ('<b>Inactivo</b>'/'<b>Activo</b>').<br>Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
 			<form method="POST" action="JSP/eliminar_usuario.jsp" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
 				<!-- ******************* ********************* ******************** -->
 				<!-- snapshot tiene la conexión CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
@@ -99,6 +99,7 @@
 					<tr>
 						<th>Nombre</th>
 						<th>Usuario</th>
+						<!--<th>Tipo</th>-->
 						<th>Estatus</th>
 					</tr>
 					<!-- IMPORTANT, class="list" have to be at tbody -->
@@ -108,6 +109,7 @@
 						<tr>
 							<td class="name"><c:out value='${row.nombre}'/> <c:out value="${row.apellido}"/></td>
 							<td class="iduser"><c:out value='${row.ID_usuario}'/></td>
+							<!--<td class="tipo"><c:out value='${row.tipo_usuario}'/></td>-->
 							<td class="estatus"><c:out value="${row.estatus}"/></td>
 						</tr>
 						</c:forEach>
@@ -117,7 +119,7 @@
 				</div>
 				<script type="text/javascript">
 					var options = {
-					valueNames: [ 'name', 'iduser', 'estatus' ]
+					valueNames: [ 'name', 'iduser', 'tipo', 'estatus' ]
 					};
 
 					var userList = new List('users', options);

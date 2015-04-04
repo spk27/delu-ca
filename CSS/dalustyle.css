@@ -112,6 +112,8 @@ input.button {
 	background-color: #00CC63;
 	font-size: 14px;
 	text-align: left;
+	border-radius: 6px;
+	margin-top: 2px;
 }
 
 form.login {
@@ -586,5 +588,9 @@ li{
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+
+	input[type=file]{
+		width: 93%;
 	}
 }

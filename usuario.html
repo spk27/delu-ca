@@ -18,83 +18,87 @@
 	<div id="menu_usuario">
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
-			<li><a href="#"><span class="span_menu">Reportar</span></a></li>
-			<li><a href="#"><span class="span_menu">Consultar</span></a></li>
-			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>,Solicitante</span></li>
+			<!--<li><a href="#"><span class="span_menu">Reportar</span></a></li>
+			<li><a href="#"><span class="span_menu">Consultar</span></a></li>-->
+			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Solicitante</span></li>
 		</ul>
 	</div>
 
 	<div class="body_inside">
 		<div id="content-wrap">
 			<div id="main"> 
-				<h1 onclick="hideshow();" class="mouse">Reportes</h1>
-				<p class="p_texto">En la opción<strong> Reportes</strong> puede emitir sus solicitudes de incidentes </p>
-
-				<form autocomplete="off" name="form" style="display:block" onsubmit="return validateFormSol()" method="" enctype="multipart/form-data">
+				<h1 onclick="hideshow();" class="mouse">Solicitudes</h1>
+				<p class="p_texto">Emita una <strong>Solicitud</strong> y espere a que sea atendida por alguno de nuestro Analistas. Podrá ver su solicitud, a la derecha una vez que la halla emitido.</p>
+				<form  name="form" id="form" method="POST" action="JSP/nueva_solicitud.jsp" style="display:block" onsubmit="return validateFormSol()" autocomplete="off">
 					<label>Prioridad</label>
-					<select class="select_form_cuerpo glow" name="prioridad">
-						<option value="">¿Qué tanta aténción requiere?</option>
+					<select class="select_form_cuerpo glow" id="prioridad" name="prioridad">
+						<option value="0">¿Qué tanta aténción requiere?</option>
 						<option value="1">1 - Máxima</option>
 						<option value="2">2 - Media</option>
 						<option value="3">3 - Baja</option>
 					</select>
 					<label>Tipo</label>
 					<select class="select_form_cuerpo glow" name="tipo">
-						<option value=""> Tipo de Siniestro</option>
-						<option value="hardware">Hardware</option>
-						<option value="software">Software</option>
-						<option value="desarrollo">Desarrollo</option>
+						<option value="0"> Tipo de Siniestro</option>
+						<option value="Hardware">Hardware</option>
+						<option value="Software">Software</option>
+						<option value="Desarrollo">Desarrollo</option>
 					</select>
 
+					<label>Tiempo Máximo de Respuesta</label>
+					<input name="tiempo_max" type="text" class="input_form_cuerpo glow" onfocus="hola(t)" onblur="chao(t)">
+					<p class="p_info" id="t" style="display:none;">Valor número. Indique la cantidad de días que está dispuesto a tolerar para que la falla sea atendida.</p>
+
 					<label>Imagen</label>
-					<input class="input_form_cuerpo glow" type="file" size="60" name="file1">
+					<input class="input_form_cuerpo glow" type="file" name="imagen">
 					
 					<label>Descripción</label>
-					<textarea name="descripcion" class="glow" rows="5" cols="5" onfocus="hola(p)" onblur="chao(p)"></textarea>
-					<p class="p_info" id="p" style="display:none;">Brinde toda la información posible sobre el siniestro. Esto ayadará a nuestros Analista a entender mejor la situación y resolver sin contratiempos el problema.</p>
+					<textarea name="descripcion" class="glow" onfocus="hola(p)" onblur="chao(p)"></textarea>
+					<p class="p_info" id="p" style="display:none;">Brinde toda la información posible sobre el siniestro. Esto ayadará a nuestros Analistas a entender mejor la situación y resolver sin contratiempos el problema.</p>
 					<input class="button_cuerpo button_whole glow" type="submit" value="enviar">
 				</form>
 			</div>
 		</div>
 		<div id="content-wrap">
 			<div id="main"> 
-				<h1 onclick="hideshow2();" class="mouse">Consultar</h1>
-				<p class="p_texto">Como tambien puede <strong>Consultar</strong> el estado sus solicitudes ya emitidas</p>
+				<h1 onclick="hideshow2();" class="mouse">Consultar Solicitudes</h1>
+				<p class="p_texto">Información relacionada con las solicitudes generadas por usted. En la tabla puede verlas desde la más reciente a la más antigua.</p>
 				<form method="" name="form2" style="display:block">
 					<table>
 						<tr> 
-							<th></th>
 							<th>N#</th>
-							<th>Fecha</th>
 							<th>Prioridad</th>
 							<th>Tipo</th>
-							<th>Usuario</th>
+							<th>TMax</th>
 							<th>Estado</th>
 							<th>Imagen</th>
-							<th>Comentario</th>
+							<th>Descripción</th>
 						</tr>
-						<tr> 
-							<td><input type="radio" name="s1" value="1"></td>
-							<td>#1111</td> 
-							<td>17-03</td> 
-							<td>3</td>
-							<td>Hardware</td>
-							<td>daguilar</td>
-							<td>pverde</td>
-							<td class="imagen"></td>
-							<td class="coments"><a href="#">Abrir</a></td>
-						</tr>
-						<tr> 
-							<td><input type="radio" name="s1" value="3"></td>
-							<td>#3333</td>
-							<td>17-03</td>
-							<td>1</td>
-							<td>Software</td>
-							<td>lperez</td>
-							<td>projo</td>
-							<td class="imagen"></td>
-							<td class="coments"><a href="#">Abrir</a></td>
-						</tr>
+						<tbody>
+							<!-- ******************* ********************* ******************** -->
+							<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+							url="jdbc:mysql://localhost/db_daluca"
+							user="root"  password="lperez18"/>
+							<sql:query dataSource="${snapshot}" var="result">
+							SELECT * FROM solicitud_ticket WHERE generada_por="<%out.print(session.getAttribute("ID_Usuario"));%>" ORDER BY numero_solicitud DESC;
+							</sql:query>
+							<c:forEach var="row" items="${result.rows}">
+							<tr>
+								<td><c:out value="${row.numero_solicitud}"/></td>
+								<td>
+									<c:if test="${row.prioridad == 1}">Máxima</c:if>
+									<c:if test="${row.prioridad == 2}">Media</c:if>
+									<c:if test="${row.prioridad == 3}">Baja</c:if>
+								</td>
+								<td><c:out value="${row.tipo_incidente}"/></td>
+								<td><c:out value="${row.tiempo_max_respuesta}"/></td>
+								<td><c:out value="${row.estatus}"/></td>
+								<td><c:out value="${row.imagen}"/></td>
+								<td><c:out value="${row.descripcion}"/></td>
+							</tr>
+							</c:forEach>
+							<!-- ******************* ********************* ******************** -->
+						</tbody>
 					</table> 
 					<p class="p_texto">Finaliza su solicitud, seleccionela y <strong>Califiquela</strong> </p>
 					<input class="button_cuerpo button_whole glow" name="calificar" value="calificar"  type="submit" />
@@ -106,13 +110,13 @@
 <script type="text/javascript">
   function validateFormSol() {
     var y = document.forms["form"]["prioridad"].value;
-    if (y == null || y == "") {
+    if (y == null || y == "0") {
     	reset();
     	alertify.alert("<h1>Atención</h1><p class='p_texto'>Indique la gravedad (máxima, media o baja)  del incidente.</p>");
     return false;
     }
     var y = document.forms["form"]["tipo"].value;
-    if (y == null || y == "") {
+    if (y == null || y == "0") {
     	reset();
     	alertify.alert("<h1>Atención</h1><p class='p_texto'>Indique que tipo (hardware, software o desarrollo) es el siniestro.</p>");
     return false;

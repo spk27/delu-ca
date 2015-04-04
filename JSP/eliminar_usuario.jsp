@@ -2,8 +2,6 @@
 
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <%
 	String site = new String("../index.jsp");
@@ -39,7 +37,12 @@
 				if(!rs.next()){
 					session.setAttribute("msjEliminar", "error_eliminar");
 				}else{
-					consulta = "UPDATE db_daluca.usuario SET estatus='Inactivo' WHERE ID_usuario=\""+usuario+"\";";
+					String status = rs.getString(8);
+					if(status.equals("Inactivo")){
+						consulta = "UPDATE db_daluca.usuario SET estatus='Activo' WHERE ID_usuario=\""+usuario+"\";";
+					}else{
+						consulta = "UPDATE db_daluca.usuario SET estatus='Inactivo' WHERE ID_usuario=\""+usuario+"\";";
+					}
 					stmt.executeUpdate(consulta);
 					session.setAttribute("msjEliminar", "msjOK");
 				}

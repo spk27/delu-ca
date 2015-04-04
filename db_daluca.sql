@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 31-03-2015 a las 19:14:17
+-- Tiempo de generación: 04-04-2015 a las 02:29:05
 -- Versión del servidor: 5.6.22-log
 -- Versión de PHP: 5.4.16
 
@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS `departamento` (
 
 INSERT INTO `departamento` (`ID_departamento`, `nombre_dpto`, `descripcion`) VALUES
 ('DALU_ECO', 'Departamento de Economia y Finanzas', 'El departamento encargado de la administración financiera de esta institución cuyo proposito no se ha definido.'),
-('DALU_SIS', 'Sistemas e Informatica', 'Gestiona todo lo referente al area de IT de la organización.');
+('DALU_SIS', 'Sistemas e Informatica', 'Gestiona todo lo referente al area de IT de la organización.'),
+('DELU_SHOW', 'Departamento de Espectaculos', 'Hahahaha no puej, tiene que haber uno para los showceros de la empresa.');
 
 -- --------------------------------------------------------
 
@@ -63,12 +64,12 @@ CREATE TABLE IF NOT EXISTS `departamento_atiende_solicitud` (
 
 CREATE TABLE IF NOT EXISTS `solicitud_ticket` (
   `numero_solicitud` int(11) NOT NULL,
-  `descripcion` varchar(500) NOT NULL,
+  `descripcion` text NOT NULL,
   `fecha_cierre` date NOT NULL,
-  `estatus` varchar(70) NOT NULL,
-  `tipo_incidente` varchar(70) NOT NULL,
-  `prioridad` varchar(70) NOT NULL,
-  `descripcion_solucion` varchar(500) NOT NULL,
+  `estatus` set('Atendido','En Espera','En Proceso') NOT NULL,
+  `tipo_incidente` set('Hardware','Software','Desarrollo') NOT NULL,
+  `prioridad` set('1','2','3') NOT NULL,
+  `descripcion_solucion` text NOT NULL,
   `tiempo_requerido` time NOT NULL,
   PRIMARY KEY (`numero_solicitud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -109,7 +110,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `apellido` varchar(70) NOT NULL,
   `ID_usuario` varchar(70) NOT NULL DEFAULT '',
   `ID_password` varchar(70) NOT NULL COMMENT 'constraseña del usuario',
-  `fecha_nacimiento` date DEFAULT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `estatus` set('Activo','Inactivo') NOT NULL COMMENT 'para la eliminación',
   PRIMARY KEY (`ID_usuario`),
   KEY `tipo_usuario` (`tipo_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -118,10 +120,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`tipo_usuario`, `cedula`, `nombre`, `apellido`, `ID_usuario`, `ID_password`, `fecha_nacimiento`) VALUES
-(2, 23765789, 'Diana', 'Acevedo', 'dacevedo', 'dacevedo', '2010-08-11'),
-(3, 20938475, 'Daniel', 'Aguilar', 'daguilar', 'daguilar', '2015-03-31'),
-(1, 19919468, 'Luis', 'Pérez', 'lperez', 'lperez', '1992-03-20');
+INSERT INTO `usuario` (`tipo_usuario`, `cedula`, `nombre`, `apellido`, `ID_usuario`, `ID_password`, `fecha_nacimiento`, `estatus`) VALUES
+(3, 12345876, 'Anny', 'Perez', 'ajperez', 'ajperez', '1989-01-14', 'Activo'),
+(2, 23765789, 'Diana', 'Acevedo', 'dacevedo', 'dacevedo', '2010-08-11', 'Activo'),
+(3, 20938475, 'Daniel', 'Aguilar', 'daguilar', 'daguilar', '2015-03-31', 'Inactivo'),
+(4, 2330495730879, 'Lana', 'Del Rey', 'ldelrey', 'ldelrey', '1989-11-01', 'Inactivo'),
+(1, 19919468, 'Luis', 'Pérez', 'lperez', 'lperez', '1992-03-20', 'Activo'),
+(4, 500678345, 'Nathaniel', 'Fisher', 'nfisher', 'nfisher', '1978-04-16', 'Activo'),
+(4, 23456789, 'Florence', 'Welch', 'wflorence', 'wflorence', '1987-06-16', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -155,9 +161,13 @@ CREATE TABLE IF NOT EXISTS `usuario_pertenece_departamento` (
 --
 
 INSERT INTO `usuario_pertenece_departamento` (`ID_departamento`, `ID_usuario`) VALUES
+('DALU_ECO', 'ajperez'),
 ('DALU_ECO', 'daguilar'),
+('DALU_ECO', 'ldelrey'),
 ('DALU_SIS', 'dacevedo'),
-('DALU_SIS', 'lperez');
+('DALU_SIS', 'lperez'),
+('DELU_SHOW', 'nfisher'),
+('DELU_SHOW', 'wflorence');
 
 -- --------------------------------------------------------
 

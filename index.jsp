@@ -97,13 +97,18 @@
     }
 
     if("msjOK" == session.getAttribute("msjEliminar")){ %>
-      <div class="msjOK">Se ha colocado como Inactivo al usuario.</div>
+      <div class="msjOK">Se ha modificado satisfactoriamente el estatus del usuario.</div>
       <% session.removeAttribute("msjEliminar"); 
     }
 
     if("mismo" == session.getAttribute("msjEliminar")){ %>
       <div class="msjError">No puedes colocarte inactivo a ti mismo.</div>
       <% session.removeAttribute("msjEliminar"); 
+    }
+
+    if("msjOK" == session.getAttribute("newSol")){ %>
+      <div class="msjOK">Se ha generado una nueva solicitud de forma exitosa!</div>
+      <% session.removeAttribute("newSol"); 
     }
 
   /*FIN _ MENSAJES PARA LOS ERROES DE C.R.U.D */
@@ -123,6 +128,11 @@
   <div id="footer">
       <p id="inside">&copy; 2015 <strong>Dalu Company</strong><br>Poryecto de Desarrollo Web - FACyT, UC 2015.</p>
   </div>
+  <p class="p_texto">lperez - Admin<br>
+    ajperez - Gerente<br>
+    dacevedo - Analista<br>
+    wflorence - Solicitante
+  </p>
 </body>
 </html>
 
