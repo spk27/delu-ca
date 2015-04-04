@@ -1,11 +1,6 @@
 .list {
   font-family: "Lato", sans-serif;
 }
-td {
-  padding:10px; 
-  border:solid 1px #eee;
-}
-
 input.search {
   border:solid 1px #28a8e0;
   border-radius: 5px;
@@ -19,16 +14,14 @@ input.search:focus {
 }
 .sort {
   padding:8px 10px;
-  border-radius: 6px;
-  border:none;
-  display:inline-block;
   color:#fff;
   text-decoration: none;
-  background-color: #28a8e0;
+  background-color: #26a3e4;
   height:40px;
-  width: 30%;
+  border-bottom: 3px solid #636363;
 }
 .sort:hover {
+  cursor: pointer;
   text-decoration: none;
   background-color:#1b8aba;
 }

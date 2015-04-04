@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script type="text/javascript" src="JS/list.js"></script>
-  <link rel="stylesheet" href="CSS/list.css" type="text/css" />
+<link rel="stylesheet" href="CSS/list.css" type="text/css" />
 
 <div id="wrap"> 
 	<div id="header">
@@ -91,39 +91,32 @@
 				<sql:query dataSource="${snapshot}" var="result">
 					SELECT * from db_daluca.usuario;
 				</sql:query>
-				<div id="users">
+				<div id="FiltrarUsuarios">
 				<input class="search glow" placeholder="Filtrar Usuarios" />
 				<!--<input type="button" value="Ordena por User" class="sort" data-sort="name">-->
-				<div style="display:block; max-height:200px; overflow-y: auto; margin-bottom:10px;">
-				<table>
-					<tr>
-						<th>Nombre</th>
-						<th>Usuario</th>
-						<!--<th>Tipo</th>-->
-						<th>Estatus</th>
-					</tr>
-					<!-- IMPORTANT, class="list" have to be at tbody -->
-					
-					<tbody class="list">
-						<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
-						<tr>
-							<td class="name"><c:out value='${row.nombre}'/> <c:out value="${row.apellido}"/></td>
-							<td class="iduser"><c:out value='${row.ID_usuario}'/></td>
-							<!--<td class="tipo"><c:out value='${row.tipo_usuario}'/></td>-->
-							<td class="estatus"><c:out value="${row.estatus}"/></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+					<div style="display:block; max-height:200px; overflow-y: auto; margin-bottom:10px;">
+						<table>
+							<tr>
+								<th>Nombre</th>
+								<th>Usuario</th>
+								<!--<th>Tipo</th>-->
+								<th>Estatus</th>
+							</tr>
+							<!-- IMPORTANT, class="list" have to be at tbody -->
+							
+							<tbody class="list">
+								<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
+								<tr>
+									<td class="name"><c:out value='${row.nombre}'/> <c:out value="${row.apellido}"/></td>
+									<td class="iduser"><c:out value='${row.ID_usuario}'/></td>
+									<!--<td class="tipo"><c:out value='${row.tipo_usuario}'/></td>-->
+									<td class="estatus"><c:out value="${row.estatus}"/></td>
+								</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
-				</div>
-				<script type="text/javascript">
-					var options = {
-					valueNames: [ 'name', 'iduser', 'tipo', 'estatus' ]
-					};
-
-					var userList = new List('users', options);
-				</script>
 				<label>Usuario: </label>
 				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow">
 				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
@@ -132,6 +125,13 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	var options = {
+	valueNames: [ 'name', 'iduser', 'tipo', 'estatus' ]
+	};
+
+	var userList = new List('FiltrarUsuarios', options);
+</script>
 <script type="text/javascript">
 /*VALIDACIONES DE LOS FORMULARIOS QUE CONTIENE LA PÁGINA ADMIN.JSP*/
 	function validateForm() {

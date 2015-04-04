@@ -362,20 +362,20 @@ input.small_button {
 /* Tabla */
 
 table{     
-	font-family: "Lato", Sans-Serif;
-	font-size: 14px; 
+	font-family: "Lato", Sans-Serif; 
 	width: 100%; 
 	text-align: left; 
 	border-collapse: collapse;
-	box-shadow: 0.1em 0.2em 0.3em #888888;
+	box-shadow: 0.1em 0.1em 0.2em #888888;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	border: solid 1px #636363;
 }
 
 th{
-	font-size: 14px;     
-	padding-left: 10px;
+	font-size: 15px;     
+	vertical-align: middle;
+	text-align: center;
 	background: #26a3e4;  
 	border-bottom: 3px solid #636363;
 	color: #fff;
@@ -384,14 +384,14 @@ th{
 }
 
 td {   
-	padding: 5px; 
-	background-color: #FFFFFF;    
+	padding: 7px;   
 	color: #000000;   
 	border-top: 1px solid #636363;
 }
-
+tr{
+	font-size: 13px;
+}
 tr:hover td {
-	background: #d0dafd; 
 	color: #339;
 	cursor: pointer;
 }
@@ -402,6 +402,15 @@ tr:hover{
 	box-shadow: 0px 0px 35px -8px rgba(0,0,0,0.5);
 }
 
+table tbody tr.prio_baja{
+	background-color: #00CC66;
+}
+table tbody tr.prio_media{
+	background-color: #CCFF33;
+}
+table tbody tr.prio_maxima{
+	background-color: #FF6600;
+}
 /******************************************************************************/
 /******************************************************************************/
 /******************************************************************************/
