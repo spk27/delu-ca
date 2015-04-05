@@ -48,7 +48,7 @@
 					<label>Fecha de Nacimiento:
 						<input type="text" name="f_nac" class="input_form_cuerpo glow" size="20"onfocus="hola(f_nacimiento)" onblur="chao(f_nacimiento)">
 					</label>
-					<p class="p_info" id="f_nacimiento" style="display:none;">¡<b>Obligatorio</b>! AÑO-MES-DIA, valores numericos estrictamente</p>
+					<p class="p_info" id="f_nacimiento" style="display:none;">¡<b>Obligatorio</b>! AÑO-MES-DIA, valores numericos separados por guión(-) estrictamente</p>
 					<label>Tipo de Usuario
 					<select class="select_form_cuerpo glow" name="tipo">
 							<option value="0">Elija Uno</option>

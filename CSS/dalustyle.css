@@ -542,6 +542,7 @@ textarea:focus {
 	max-width: 150px;
 	max-height: 60px;
 	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 li{
@@ -605,15 +606,13 @@ li{
 
 @media screen and (max-width:1107px){
 	th {
-		max-width: 10px;
+		min-width: 70px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
 
-	td {   
-		max-width: 10px;
-		overflow: hidden;
+	td {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
