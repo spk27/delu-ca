@@ -48,7 +48,7 @@
 					<label>Fecha de Nacimiento:
 						<input type="text" name="f_nac" class="input_form_cuerpo glow" size="20"onfocus="hola(f_nacimiento)" onblur="chao(f_nacimiento)">
 					</label>
-					<p class="p_info" id="f_nacimiento" style="display:none;">¡<b>Obligatorio</b>! AÑO-MES-DIA, valores numericos separados por guión(-) estrictamente</p>
+					<p class="p_info" id="f_nacimiento" style="display:none;">¡<b>Obligatorio</b>! AÑO-MES-DIA, valores numericos estrictamente</p>
 					<label>Tipo de Usuario
 					<select class="select_form_cuerpo glow" name="tipo">
 							<option value="0">Elija Uno</option>
@@ -94,7 +94,7 @@
 				<div id="FiltrarUsuarios">
 				<input class="search glow" placeholder="Filtrar Usuarios" />
 				<!--<input type="button" value="Ordena por User" class="sort" data-sort="name">-->
-					<div style="display:block; max-height:200px; overflow-y: auto; margin-bottom:10px;">
+					<div style="display:block; max-height:300px; overflow-y: auto; margin-bottom:5px; margin-top: 5px;">
 						<table>
 							<tr>
 								<th>Nombre</th>
