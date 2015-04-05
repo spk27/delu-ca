@@ -94,7 +94,7 @@
 				<div id="FiltrarUsuarios">
 				<input class="search glow" placeholder="Filtrar Usuarios" />
 				<!--<input type="button" value="Ordena por User" class="sort" data-sort="name">-->
-					<div style="display:block; max-height:300px; overflow-y: auto; margin-bottom:5px; margin-top: 5px;">
+					<div style="display:block; max-height:200px; overflow-y: auto; margin-bottom:10px;">
 						<table>
 							<tr>
 								<th>Nombre</th>

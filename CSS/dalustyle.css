@@ -77,6 +77,9 @@ blockquote {
 }
 
 /* form elements */
+form {
+	margin: 5px 5px 5px 5px;
+}
 label {
 	display:block;
 	font-weight:bold;
@@ -387,7 +390,6 @@ td {
 }
 tr{
 	font-size: 13px;
-	vertical-align: text-top;
 }
 tr:hover td {
 	color: #339;
@@ -401,13 +403,13 @@ tr:hover{
 }
 
 table tbody tr.prio_baja{
-	background-color: #66C285;
+	background-color: #00CC66;
 }
 table tbody tr.prio_media{
-	background-color: #FFFF80;
+	background-color: #CCFF33;
 }
 table tbody tr.prio_maxima{
-	background-color: #FF6666;
+	background-color: #FF6600;
 }
 /******************************************************************************/
 /******************************************************************************/
@@ -462,11 +464,6 @@ textarea{
 	width: 96%;
 }
 
-input.input_form_cuerpo:focus {
-  outline:none;
-  border-color:#aaa;
-}
-
 .select_form_cuerpo{
 	padding:7px 14px;
 	margin-left: 0px;
@@ -475,16 +472,6 @@ input.input_form_cuerpo:focus {
 	font-size: 14px;
 	color: #000000;
 	width: 100%;
-}
-
-select.select_form_cuerpo:focus {
-  outline:none;
-  border-color:#aaa;
-}
-
-textarea:focus {
-  outline:none;
-  border-color:#aaa;
 }
 
 .button_header{
@@ -538,6 +525,7 @@ textarea:focus {
 	box-shadow: 0px 0px 35px -8px rgba(0,0,0,0.5);
 }
 
+<<<<<<< HEAD
 .long_text{
 	max-width: 150px;
 	max-height: 60px;
@@ -545,6 +533,8 @@ textarea:focus {
 	overflow-x: hidden;
 }
 
+=======
+>>>>>>> parent of feecabb... Enhace
 li{
 	font-size: 16px;
 }
