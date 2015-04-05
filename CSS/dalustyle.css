@@ -525,19 +525,12 @@ textarea{
 	box-shadow: 0px 0px 35px -8px rgba(0,0,0,0.5);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 .long_text{
 	max-width: 150px;
 	max-height: 60px;
 	overflow-y: hidden;
 	overflow-x: hidden;
 }
-
-=======
->>>>>>> parent of feecabb... Enhace
-=======
->>>>>>> parent of feecabb... Enhace
 li{
 	font-size: 16px;
 }
