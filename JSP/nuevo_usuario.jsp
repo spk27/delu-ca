@@ -44,13 +44,13 @@
 			connection = DriverManager.getConnection(connectionURL, "root", "lperez18");
 			}catch(Exception ex){
 				out.println("Algo ha acurrido, no se ha podido conectar a la BD. "+ex);
-			}
+			}finally{}
 			/* HACIENDO LA INSERCIÓN, YA SE VERIFICO QUE NO EXISTIERA */
 			try{
 			  stmt = connection.createStatement(); 
 
-			  queryAccount = "INSERT INTO db_daluca.usuario(tipo_usuario, cedula, nombre, apellido, ID_usuario, ID_password, fecha_nacimiento, estatus) VALUES ("+tipo+","+cedula+",\""+nombre+"\",\""+apellido+"\",\""+usuario+"\",\""+usuario+"\",\""+f_nac+"\",\"Activo\");";
-
+			  queryAccount = "INSERT INTO db_daluca.usuario(tipo_usuario, cedula, nombre, apellido, ID_usuario, ID_password, fecha_nacimiento, estatus, departamento) VALUES ("+tipo+","+cedula+",\""+nombre+"\",\""+apellido+"\",\""+usuario+"\",\""+usuario+"\",\""+f_nac+"\",\"Activo\",\""+departamento+"\");";
+			  
 			  stmt.executeUpdate(queryAccount);
 			}catch(Exception ex){
 				session.setAttribute("msjError", "user_error_param");
@@ -58,15 +58,14 @@
 				String site = new String("../index.jsp");
 				response.setStatus(response.SC_MOVED_TEMPORARILY);
 				response.setHeader("Location",site);
-			}
+			}finally{}
 			
 			/* AÑADIENDO USUARIO A UN DEPARTAMENTO */
 			try{
 				stmt = connection.createStatement(); 
-
 				queryAccount = "INSERT INTO db_daluca.usuario_pertenece_departamento(ID_departamento, ID_usuario) VALUES (\""+departamento+"\",\""+usuario+"\");";
-
-				stmt.executeUpdate(queryAccount);
+				
+				//stmt.executeUpdate(queryAccount);
 			}finally{
 				connection.close();
 				session.setAttribute("msjError", "user_insertado");

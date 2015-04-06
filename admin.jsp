@@ -75,7 +75,7 @@
 					</select></label>
 					<label>Comentario</label>
 					<textarea class="glow" name="comentario" rows="5" cols="5"></textarea>
-					<input name="submit_registro" id="submit_registro" class="button_cuerpo button_whole glow" type="submit" value="enviar">
+					<input name="submit_registro" id="submit_registro" class="button_cuerpo button_whole glow" type="submit" value="Enviar">
 				</form>
 			</div>
 		</div>
@@ -97,10 +97,10 @@
 					<div style="display:block; max-height:300px; overflow-y: auto; margin-bottom:5px; margin-top: 5px;">
 						<table>
 							<tr>
-								<th>Nombre</th>
-								<th>Usuario</th>
-								<!--<th>Tipo</th>-->
-								<th>Estatus</th>
+								<th class="sort" data-sort="name">Nombre</th>
+								<th class="sort" data-sort="iduser">Usuario</th>
+								<th class="sort" data-sort="tipo">Tipo</th>
+								<th class="sort" data-sort="estatus">Estatus</th>
 							</tr>
 							<!-- IMPORTANT, class="list" have to be at tbody -->
 							
@@ -109,7 +109,12 @@
 								<tr>
 									<td class="name"><c:out value='${row.nombre}'/> <c:out value="${row.apellido}"/></td>
 									<td class="iduser"><c:out value='${row.ID_usuario}'/></td>
-									<!--<td class="tipo"><c:out value='${row.tipo_usuario}'/></td>-->
+									<td class="tipo">
+										<c:if test="${row.tipo_usuario == 1}">Administrador</c:if>
+										<c:if test="${row.tipo_usuario == 2}">Analista</c:if>
+										<c:if test="${row.tipo_usuario == 3}">Gerente</c:if>
+										<c:if test="${row.tipo_usuario == 4}">Solicitante</c:if>
+									</td>
 									<td class="estatus"><c:out value="${row.estatus}"/></td>
 								</tr>
 								</c:forEach>
@@ -119,7 +124,7 @@
 				</div>
 				<label>Usuario: </label>
 				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow">
-				<input class="button_cuerpo button_whole glow" type="submit" value="eliminar">
+				<input class="button_cuerpo button_whole glow" type="submit" value="Marcar Como Inactivo">
 			</form>
 			</div>
 		</div>

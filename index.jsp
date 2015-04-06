@@ -7,7 +7,6 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="shortcut icon" href="images/Org_Logo.png">
@@ -25,11 +24,11 @@
   <div id="wrap">
     <!-- paso de mensajes -->
     <% if("none" == session.getAttribute("msjError")){ %>
-      <div class="msjError">No ha podido ingresar, verifique los datos.</div>
+      <div class="msjError">No ha podido ingresar, verifique los datos.<br>Haga click en este mensaje para cerrarlo</div>
     <% session.removeAttribute("msjError");
     }
     if("inactivo" == session.getAttribute("msjError")){ %>
-      <div class="msjError">Has sido puesto como inactivo. Comunicate con un administrador para modificar el acceso al sistema.</div>
+      <div class="msjError">Has sido puesto como inactivo. Comunicate con un administrador para modificar el acceso al sistema.<br>Haga click en este mensaje para cerrarlo</div>
     <% session.removeAttribute("msjError");
     } %>
     <!-- FIN_ paso de mensajes -->
@@ -82,7 +81,7 @@
     }
 
     if("user_insertado" == session.getAttribute("msjError")){ %>
-      <div class="msjOK">Se ha añadido satisfactoriamente al nmuevo usuario.</div>
+      <div class="msjOK">Se ha añadido satisfactoriamente al nuevo usuario.</div>
       <% session.removeAttribute("msjError");
     }
 

@@ -34,7 +34,6 @@
 		try{
 			stmt = connection.createStatement();
 			consulta = "INSERT INTO db_daluca.solicitud_ticket(generada_por, descripcion, estatus, tipo_incidente, prioridad, tiempo_max_respuesta, imagen_url) VALUES (\""+usuario_genera+"\",\""+descripcion+"\",\""+estatus+"\",\""+tipo+"\",\""+prioridad+"\",\""+t_max_resp+"\",\""+imagen+"\");";
-			out.print(consulta);
 			stmt.executeUpdate(consulta);
 			session.setAttribute("newSol", "msjOK");
 		}finally{
