@@ -169,7 +169,7 @@
         buttonFocus   : "ok"
       });
     }
-  </script>
+</script>
 <script type="text/javascript">
   function validateFormIndex() {
     var x = document.forms["form-login"]["usu"].value;
@@ -196,4 +196,16 @@ function chao(x){
     document.getElementById(x);
     x.style.display = "none";
 }
+</script>
+<script type="text/javascript">
+  /*SLIDE UP*/
+  $('.msjError').click(function (){
+    $( this ).slideUp('slow');
+  });
+  $('.msjOK').click(function (){
+    $( this ).slideUp('slow');
+  });
+  $('.msjEliminar').click(function (){
+    $( this ).slideUp('slow');
+  });
 </script>

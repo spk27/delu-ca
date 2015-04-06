@@ -26,20 +26,21 @@
 	<div class="body_inside">
 		<div id="content-wrap">
 			<div id="main">
-				<h1 onclick="hideshow();" class="mouse">Solicitues por Atender</h1><p class="p_texto">Todas las solicitudes 'En Espera' por ser atendidas</p>
+				<h1 onclick="hideshow();" class="mouse">Solicitues por Atender</h1><p class="p_texto">Todas las solicitudes 'En Espera' por ser atendidas.<br>
+				Para añadir una solicitud a tus "solicitudes que estás atendiendo" haz clic sobre cualquiera de ellas.</p>
 				<div id="FiltrarUsuarios">
 					<form name="form" style="display:block">
 						<input class="search glow" placeholder="Escribe aquí para filtrar solicitudes" />
 						<table>
-							<tr> 
+							<tr>
+								<th>ID</th>
 								<th value="Por" class="sort" data-sort="por">Por</th>
 								<th value="Prioridad" class="sort" data-sort="prioridad">Prioridad</th>
 								<th value="Tipo" class="sort" data-sort="tipo">Tipo</th>
 								<th value="TMAX" class="sort" data-sort="t_max">TMax</th>
-								<th>Imagen</th>
 								<th>Descripción</th>
 							</tr>
-							<tbody class="list">
+							<tbody id="CuerpoSolicitudes" class="list">
 								<!-- ******************* ********************* ******************** -->
 								<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 								url="jdbc:mysql://localhost/db_daluca"
@@ -48,7 +49,8 @@
 								SELECT * FROM solicitud_ticket WHERE estatus="En Espera" ORDER BY prioridad ASC;
 								</sql:query>
 								<c:forEach var="row" items="${result.rows}">
-								<tr class="<c:if test='${row.prioridad == 1}'>prio_maxima</c:if><c:if test='${row.prioridad == 2}'>prio_media</c:if><c:if test='${row.prioridad == 3}'>prio_baja</c:if>">
+								<tr class="<c:if test='${row.prioridad == 1}'>prio_maxima</c:if><c:if test='${row.prioridad == 2}'>prio_media</c:if><c:if test='${row.prioridad == 3}'>prio_baja</c:if>" id="<c:out value='${row.numero_solicitud}'/>">
+									<td><c:out value="${row.numero_solicitud}"/></td>
 									<td class="por"><c:out value="${row.generada_por}"/></td>
 									<td class="prioridad">
 										<c:if test="${row.prioridad == 1}">Máxima</c:if>
@@ -56,15 +58,13 @@
 										<c:if test="${row.prioridad == 3}">Baja</c:if>
 									</td>
 									<td class="tipo"><c:out value="${row.tipo_incidente}"/></td>
-									<td class="t_max"><c:out value="${row.tiempo_max_respuesta}"/></td>
-									<td><c:out value="${row.imagen}"/></td>
+									<td class="t_max"><c:out value="${row.tiempo_max_respuesta}"/> días</td>
 									<td class="descripcion"><div class="long_text"><c:out value="${row.descripcion}"/></div></td>
 								</tr>
 								</c:forEach>
 								<!-- ******************* ********************* ******************** -->
 							</tbody>
 						</table>
-						<input class="button_cuerpo button_whole glow" name="atender" value="atender"  type="submit" />
 					</form>
 				</div>
 			</div>
@@ -74,33 +74,47 @@
 			<div id="main"> 
 				<h1 onclick="hideshow2();" class="mouse">Solicitudes que estás Atendiendo</h1>
 				<p class="p_texto">Estas son las solicitudes que están siende atendidas por usted</p>
+				<div id="FiltrarUsuarios2">
 				<form name="form2" style="display:block">
 					<table>
-						<tr> 
-							<th></th>
-							<th>N#</th>
-							<th>Fecha</th>
-							<th>Prioridad</th>
-							<th>Tipo</th>
-							<th>Usuario</th>
-							<th>Estado</th>
-							<th>Imagen</th>
-							<th>Comentario</th>
-						</tr>
-						<tr> 
-							<td><input type="checkbox" name"s1" value="1"></td>
-							<td>#1111</td> 
-							<td>17-03</td> 
-							<td>3</td>
-							<td>Hardware</td>
-							<td>daguilar</td>
-							<td>pverde</td>
-							<td class="imagen"></td>
-							<td class="coments"><a href="#">Abrir</a></td>
-						</tr>
-					</table> 
+							<tr>
+								<th>ID</th>
+								<th value="Por" class="sort" data-sort="por">Por</th>
+								<th value="Prioridad" class="sort" data-sort="prioridad">Prioridad</th>
+								<th value="Tipo" class="sort" data-sort="tipo">Tipo</th>
+								<th value="TMAX" class="sort" data-sort="t_max">TMax</th>
+								<th value="Estatus" class="sort" data-sort="estatus">Estatus</th>
+								<th>Descripción</th>
+							</tr>
+							<tbody class="list">
+								<!-- ******************* ********************* ******************** -->
+								<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+								url="jdbc:mysql://localhost/db_daluca"
+								user="root"  password="lperez18"/>
+								<sql:query dataSource="${snapshot}" var="result">
+								SELECT * FROM solicitud_ticket WHERE estatus="En Proceso" ORDER BY prioridad ASC;
+								</sql:query>
+								<c:forEach var="row" items="${result.rows}">
+								<tr class="<c:if test='${row.prioridad == 1}'>prio_maxima</c:if><c:if test='${row.prioridad == 2}'>prio_media</c:if><c:if test='${row.prioridad == 3}'>prio_baja</c:if>" id="<c:out value='${row.numero_solicitud}'/>">
+									<td><c:out value="${row.numero_solicitud}"/></td>
+									<td class="por"><c:out value="${row.generada_por}"/></td>
+									<td class="prioridad">
+										<c:if test="${row.prioridad == 1}">Máxima</c:if>
+										<c:if test="${row.prioridad == 2}">Media</c:if>
+										<c:if test="${row.prioridad == 3}">Baja</c:if>
+									</td>
+									<td class="tipo"><c:out value="${row.tipo_incidente}"/></td>
+									<td class="t_max"><c:out value="${row.tiempo_max_respuesta}"/> días</td>
+									<td class="estatus"><c:out value="${row.estatus}"/></td>
+									<td class="descripcion"><div class="long_text"><c:out value="${row.descripcion}"/></div></td>
+								</tr>
+								</c:forEach>
+								<!-- ******************* ********************* ******************** -->
+							</tbody>
+						</table>
 					<input class="button_cuerpo button_whole glow" name="finalizar" value="finalizar"  type="submit" />
 				</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -109,6 +123,47 @@
 	var options = {
 	valueNames: [ 'por', 'prioridad', 'tipo', 't_max', 'descripcion' ]
 	};
-
 	var userList = new List('FiltrarUsuarios', options);
+	var options2 = {
+	valueNames: [ 'por', 'prioridad', 'tipo', 't_max', 'descripcion', 'estatus' ]
+	};
+	var userList = new List('FiltrarUsuarios2', options2);
+</script>
+<script type="text/javascript">
+function solicitud() {
+    var table = document.getElementById("CuerpoSolicitudes");
+    var rows = table.rows; // or table.getElementsByTagName("tr");
+    for (var i = 0; i < rows.length; i++) {
+        rows[i].onclick = (function() {
+            var cnt = i; 
+            return function() {
+            	reset();
+            	var ID = this.cells[0].innerHTML;
+            	var por = this.cells[1].innerHTML;
+            	var prio = this.cells[2].innerHTML;
+            	var tipo = this.cells[3].innerHTML;
+            	var tmax = this.cells[4].innerHTML;
+            	var des = this.cells[5].innerHTML;
+
+            	
+				reset();
+				var string = "<b>DETALLES SOLICITUD (#"+ID+")<br></b>¿Desea atender la solicitud número: <b>"+ID+"</b>, falla de: <b>"+tipo+"</b> y prioridad: <b>"+prio+"</b>, emitida por: \"<b>"+por+"</b>\", solicitando una respuesta en menos de <b>"+tmax+"</b>? Cuya descripcion se lee asi: "+des;
+				alertify.set({ labels: { ok: "Atender Solicitud", cancel: "Cerrar" } });
+				$("#toggleCSS").attr("href", "JS/alertify/themes/alertify.bootstrap.css");
+				alertify.prompt(string, function (e) {
+					if (e){
+						alertify.success("Se ha añadido a sus solicitudes por atender. La página se refrescara!");
+						var site = "JSP/atender_solicitud.jsp?num_sol="+ID;
+						setTimeout(function(){
+							window.location.assign(site);
+							return false;
+						}, 2000);
+					}
+				});
+				return false;
+            }    
+        })(i);
+    }
+}
+window.onload = function() { solicitud(); }
 </script>
