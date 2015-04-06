@@ -13,19 +13,20 @@
 	String num_sol = request.getParameter("num_sol");
 
 	try{
-	String connectionURL = "jdbc:mysql://localhost:3306/db_daluca"; 
+		String connectionURL = "jdbc:mysql://localhost:3306/db_daluca"; 
 		Class.forName("com.mysql.jdbc.Driver").newInstance(); 
 		connection = DriverManager.getConnection(connectionURL, "root", "lperez18");
 		
+		/* ACTUALIZANDO EL ESTADO DE LA SOLICITUD */
 		stmt = connection.createStatement();
 		consulta = "UPDATE db_daluca.solicitud_ticket SET estatus='En Proceso' WHERE numero_solicitud="+num_sol+";";
 		stmt.executeUpdate(consulta);
-		out.print(consulta);
 		
+		/* VINCULANDO LA SOLICITUD A UN ANALISTA */
+		/* Un analista puede añadir todas las solicitudes que quiera */
 		String analista = (String)session.getAttribute("ID_Usuario");
 		consulta = "INSERT INTO departamento_atiende_solicitud(numero_solicitud, atendida_por) VALUES (\""+num_sol+"\",\""+analista+"\");";
 		stmt.executeUpdate(consulta);
-		out.print(consulta);
 	}finally{
 		response.setStatus(response.SC_MOVED_TEMPORARILY);
 		response.setHeader("Location",site);

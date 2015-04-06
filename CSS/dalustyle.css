@@ -1,11 +1,45 @@
 @import url(http://fonts.googleapis.com/css?family=Oswald);
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
 
+.big_table{
+	display:block;
+	max-height:300px;
+	margin-bottom:5px;
+	margin-top: 5px;
+	overflow: hidden;
+}
+.big_table:hover{
+	overflow-y: auto;
+}
+
+div.info_per p.vales{
+	padding: 5px;
+	padding-left: 10px;
+	background-color: #E3E3E3;
+	font-size: 110%;
+}
+div.info_per p.vales:last-child{
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
 #inside{
 	margin-top: 10px;
 	font-variant: small-caps;
 	padding-top: 15px;
 }
+
+/*div #header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+div #menu, div #menu_administrador, div #menu_analista, div #menu_gerente, div #menu_usuario{
+	margin-top: 100px;
+}*/
+
 /* Top Elements */
 * { margin: 0; padding: 0; }
 
@@ -36,12 +70,21 @@ h1, h2, h3 {
 	font-weight: Bold; 		
 }
 h1 { font-size: 120%; }
-h2 { font-size: 110%; text-transform: uppercase; }
+h2 { font-size: 130%; }
 h3 { font-size: 110%; color: #f2f7f9; }
 
-h1, h2, h3, p {
+h1, h3, p {
 	margin: 0;
-	padding: 10px;		
+	padding: 14px;		
+}
+
+h2{
+	text-align: left;
+	padding: 7px 5px 5px 15px;
+	margin-top: 14px;
+	background-color: #D6D6D6;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 
 /* images */
@@ -105,6 +148,10 @@ input.button {
 	font-size: 16px;
 }
 
+.p_texto:hover{
+		background-color: #DEDEDE;
+}
+
 .p_info{
 	background-color: #00CC63;
 	font-size: 14px;
@@ -113,8 +160,20 @@ input.button {
 	margin-top: 2px;
 }
 
+.p_error{
+	background-color: red;
+	font-size: 14px;
+	text-align: left;
+	border-radius: 6px;
+	margin-top: 2px;
+	color: white;
+}
+form{
+	padding-left: 0px;
+	padding-right: 10px;
+}
 form.login {
-	padding: 0; margin: 0; 
+	padding: 8px; margin: 0; 
 	vertical-align: top;
 	background-color: transparent;
 }
@@ -129,17 +188,12 @@ form.login input.textbox {
 form.login input.button {
 	height: 23px;
 	padding: 1px 3px;
-	width: 70px;
-    border-radius: 0.0em; /* Ojo */
 }
 
 input.higth_button {
 	height: 50px;
 	padding: 1px 3px;
-    margin: auto auto auto 1em;
 	width: 90px;
-    border-radius: 0.3em; /* Ojo */
-    font: bolder 12px Arial, Sans-serif; 
 	background: #FFF;
 	color: #275F6C;
 }
@@ -153,6 +207,24 @@ input.small_button {
   font: bolder 14px "Lato", Sans-serif; 
 	background: #FFF;
 	color: #275F6C;
+}
+
+#loginform #boton-submit{
+	height: 36px;
+	width: 130px;
+	background-color: #636363;
+	color: white;
+	cursor: pointer;
+	font-family: "Lato", sans-serif;
+	text-align: center;
+}
+#loginform .input_header{
+	height: 100%;
+	width: 130px;
+	font-size: 14px;
+	padding: 9px;
+	font-family: "Lato", sans-serif;
+	text-align: center;
 }
 
 /********************************************
@@ -177,8 +249,10 @@ input.small_button {
 	width: 50%;
 }
 #main{
-	padding: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
 }
+
 /* header */
 #header {
 	position: relative;
@@ -209,12 +283,16 @@ input.small_button {
 	color: #FFF;
 	
 	/* change the values of top and Left to adjust the position of the slogan*/
-	top: 65px; left:75px;			
+	top: 70px; left:64px;			
 }
 #header #loginform {
 	float: right;
-	padding: 25px 10px 0 0;
+	padding: 15px 10px 0 0;
 	display: inline;
+}
+
+#loginform input{
+	border-color: #636363;
 }
 /* menu */
 #menu {
@@ -290,8 +368,10 @@ input.small_button {
 	text-align: center;
 }
 .span_menu{
-	vertical-align: middle;
+	margin-top: 10px;
 	padding-top: 10px;
+	vertical-align: middle;
+	background-color: transparent;
 }
 #menu ul li a:hover, #menu_usuario ul li a:hover, #menu_gerente ul li a:hover, #menu_analista ul li a:hover, #menu_administrador ul li a:hover {
 	background: #636363; 
@@ -438,15 +518,6 @@ textarea{
 	width: 98%;
 }
 
-.input_header{
-	padding: 3px;
-	margin-left: 3px;
-	font-family: "Lato", sans-serif;
-	font-size: 14px;
-	color: #000000;
-	text-align: center;
-}
-
 .input_form_cuerpo{
 	padding:7px 14px;
 	font-family: "Lato", sans-serif;
@@ -485,8 +556,8 @@ textarea:focus {
 	background-color: #636363;
 	font-size: 16px;
 	color: #FFFFFF;
-	height: 35px;
 	border: none;
+	height: 40px;
 }
 
 .button_cuerpo{
@@ -504,12 +575,14 @@ textarea:focus {
 
 .button_cuerpo:hover{
 	cursor: pointer;
+	background-color: #26a3e4;
+	border: solid 1px #636363;
+	color: black;
 }
 
 .button_header:hover{
-	background-color: #636363;
-	color: #26a3e4;
-	font-variant: small-caps;
+	background-color: #D0D0D0;
+	color: #636363;
 	cursor: pointer;
 }
 

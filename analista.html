@@ -6,11 +6,9 @@
 	<div id="header">
 		<img class="float-left" src="images/Org_Logo.png" width="89px">
 		<h1 id="logo">DALU<span class="gray"> C.A</span></h1>
-		<h2 id="slogan">Proyecto de Desarrollo Web</h2>
 
 		<div id="loginform">
 			<form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
-				<input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
 				<input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
 			</form>
 		</div>
@@ -19,6 +17,7 @@
 	<div id="menu_analista">
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+			<li><a href="JSP/usuario_info.jsp?user=<%out.print(session.getAttribute("ID_Usuario"));%>"><span class="span_menu">Mi Información</span></a></li>
 			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Analista</span></li>
 		</ul>
 	</div>
@@ -75,7 +74,7 @@
 				<h1 onclick="hideshow2();" class="mouse">Solicitudes que estás Atendiendo</h1>
 				<p class="p_texto">Estas son las solicitudes que están siende atendidas por usted</p>
 				<div id="FiltrarUsuarios2">
-				<form name="form2" style="display:block">
+				<form name="form2" id="form2" style="display:block">
 					<table>
 							<tr>
 								<th>ID</th>
@@ -147,7 +146,7 @@ function solicitud() {
 
             	
 				reset();
-				var string = "<b>DETALLES SOLICITUD (#"+ID+")<br></b>¿Desea atender la solicitud número: <b>"+ID+"</b>, falla de: <b>"+tipo+"</b> y prioridad: <b>"+prio+"</b>, emitida por: \"<b>"+por+"</b>\", solicitando una respuesta en menos de <b>"+tmax+"</b>? Cuya descripcion se lee asi: "+des;
+				var string = "<b>DETALLES SOLICITUD (#"+ID+")<br><br></b>¿Desea atender la solicitud número: <b>"+ID+"</b>, falla de: <b>"+tipo+"</b> y prioridad: <b>"+prio+"</b>, emitida por: \"<b>"+por+"</b>\", solicitando una respuesta en menos de <b>"+tmax+"</b>? Cuya descripcion se lee asi: "+des;
 				alertify.set({ labels: { ok: "Atender Solicitud", cancel: "Cerrar" } });
 				$("#toggleCSS").attr("href", "JS/alertify/themes/alertify.bootstrap.css");
 				alertify.prompt(string, function (e) {
@@ -158,6 +157,8 @@ function solicitud() {
 							window.location.assign(site);
 							return false;
 						}, 2000);
+					}else{
+						alertify.error("Ha elegido no atender la solicitud: "+ID);
 					}
 				});
 				return false;

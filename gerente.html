@@ -3,11 +3,9 @@
   <div id="header">
       <img class="float-left" src="images/Org_Logo.png" width="89px">
       <h1 id="logo">DALU<span class="gray"> C.A</span></h1>
-      <h2 id="slogan">Proyecto de Desarrollo Web</h2>
 
       <div id="loginform">
         <form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
-          <input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
           <input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
         </form>
       </div>
@@ -16,7 +14,7 @@
   <div id="menu_gerente">
     <ul>
       <li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
-      <li><a href="#"><span class="span_menu">Estadistica</span></a></li>
+      <li><a href="JSP/usuario_info.jsp?user=<%out.print(session.getAttribute("ID_Usuario"));%>"><span class="span_menu">Mi Información</span></a></li>
       <li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>,Gerente</span></li>
     </ul>
   </div>
@@ -71,14 +69,14 @@
     <div id="main">
       <h1 onclick="hideshow2();" class="mouse">Genere una colsulta</h1>
         <form method="POST" name="form2" id="form2" style="display:block">
-          <p class="p_texto">Debajo tiene una lista de consultas, eliga una para generar un reporte en formato PDF.<br>Elija la estadística que desea consultar desplegando la siguiente lista, por:  
-            <select class="select_form_cuerpo glow" name="est">
-              <option value="1">Analista</option> 
-              <option value="2">Departamento</option>
-            </select>
-          </p>
-        <input class="button_cuerpo button_whole glow" type="submit" name="consulta" value="Obterner Reporte (PDF)">
-      </form>
+            <p class="p_texto">Debajo tiene una lista de consultas, eliga una para generar un reporte en formato PDF.<br>Elija la estadística que desea consultar desplegando la siguiente lista, por:  
+              <select class="select_form_cuerpo glow" name="est">
+                <option value="1">Analista</option> 
+                <option value="2">Departamento</option>
+              </select>
+            </p>
+          <input class="button_cuerpo button_whole glow" type="submit" name="consulta" value="Obterner Reporte (PDF)">
+        </form>
     </div>
   </div>
 </div>

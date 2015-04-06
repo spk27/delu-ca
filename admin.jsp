@@ -6,11 +6,9 @@
 	<div id="header">
 			<img class="float-left" src="images/Org_Logo.png" width="89px">
 			<h1 id="logo">DALU<span class="gray"> C.A</span></h1>
-			<h2 id="slogan">Proyecto de Desarrollo Web</h2>
 
 			<div id="loginform">
 				<form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
-					<input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
 					<input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
 				</form>
 			</div>
@@ -19,10 +17,11 @@
 	<div id="menu_administrador">
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+			<li><a href="JSP/usuario_info.jsp?user=<%out.print(session.getAttribute("ID_Usuario"));%>"><span class="span_menu">Mi Información</span></a></li>
 			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Administrador</span></li>
 		</ul>
 	</div>
-	
+
 	<div class="body_inside">
 		<div id="content-wrap">
 			<div id="main"> 
@@ -30,9 +29,10 @@
 				<p class="p_texto">Agregue un nuevo participante al sistema, asignele un rol dentro de la organización. Entre mas usuarios mas ventajas podra obtener de sus enfuerzo conjunto.</p>
 				<form name="form" style="display:block" method="POST" action="JSP/nuevo_usuario.jsp" id="form" autocomplete="off" onsubmit="return validateForm()" >
 					<label>Usuario:
-						<input type="text" name="usuario" class="input_form_cuerpo glow" size="20" onfocus="hola(usu_info)" onblur="chao(usu_info)">
+						<input type="text" id="usuario" name="usuario" class="input_form_cuerpo glow" size="20" onfocus="hola(usu_info)" onblur="chao(usu_info)" >
 					</label>
 					<p class="p_info" id="usu_info" style="display:none;">¡<b>Obligatorio</b>! Debe ser único, será una referancia directa de la persona en el sistema.<br>El mismo no debe contener espacios.</p>
+					
 					<label>Nombre:
 						<input type="text" name="nombre" class="input_form_cuerpo glow" size="20" onfocus="hola(nom_info)" onblur="chao(nom_info)">
 					</label>
@@ -84,17 +84,16 @@
 			<div id="main">         
 			<h1 onclick="hideshow2();" class="mouse">Inhabilitar/Habilitar Usuario</h1>
 			<p class="p_texto">
-				Esta opción permite administrar el acceso de los usuarios al sistema. Escriba el usuario de cualquier miembro del sistema para cambiar su acceso ('<b>Inactivo</b>'/'<b>Activo</b>').<br>Para inhabilitar a un usuario escriba su usuario y presione el botón "Eliminar"</p>
+				Esta opción permite administrar el acceso de los usuarios al sistema. Escriba el usuario de cualquier miembro del sistema para cambiar su acceso ('<b>Inactivo</b>'/'<b>Activo</b>').<br>Para inhabilitar a un miembro escriba su usuario y presione el botón "Eliminar"</p>
 			<form method="POST" action="JSP/eliminar_usuario.jsp" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
 				<!-- ******************* ********************* ******************** -->
-				<!-- snapshot tiene la conexión CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
 				<sql:query dataSource="${snapshot}" var="result">
 					SELECT * from db_daluca.usuario;
 				</sql:query>
 				<div id="FiltrarUsuarios">
-				<input class="search glow" placeholder="Filtrar Usuarios" />
+				<input class="search glow" placeholder="Escriba el Usuario" type="text" name="usuario" id="usuario" />
 				<!--<input type="button" value="Ordena por User" class="sort" data-sort="name">-->
-					<div style="display:block; max-height:300px; overflow-y: auto; margin-bottom:5px; margin-top: 5px;">
+					<div class="big_table">
 						<table>
 							<tr>
 								<th class="sort" data-sort="name">Nombre</th>
@@ -105,8 +104,9 @@
 							<!-- IMPORTANT, class="list" have to be at tbody -->
 							
 							<tbody class="list">
+								<c:set var="est" value="Activo" />
 								<c:forEach var="row" items="${result.rows}"><!--asigno a row la fila resultante de la consulta-->
-								<tr>
+								<tr class="<c:if test='${row.estatus != est}'>prio_maxima</c:if><c:if test='${row.estatus == est}'>prio_baja</c:if>">
 									<td class="name"><c:out value='${row.nombre}'/> <c:out value="${row.apellido}"/></td>
 									<td class="iduser"><c:out value='${row.ID_usuario}'/></td>
 									<td class="tipo">
@@ -122,15 +122,16 @@
 						</table>
 					</div>
 				</div>
-				<label>Usuario: </label>
-				<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow">
+				<!--<input type="text" name="usuario" id="usuario" class="input_form_cuerpo glow">-->
 				<input class="button_cuerpo button_whole glow" type="submit" value="Marcar Como Inactivo">
 			</form>
 			</div>
 		</div>
 	</div>
+
 </div>
 <script type="text/javascript">
+/*PARA FILTRAR USURIOS*/
 	var options = {
 	valueNames: [ 'name', 'iduser', 'tipo', 'estatus' ]
 	};
@@ -188,7 +189,7 @@
 		var usuario = document.forms["form2"]["usuario"].value;
 		if (usuario == null || usuario == "") {
 			reset();
-			alertify.alert("<h1>Atención</h1><p class='p_texto'>Debes especificar un usuario</p>");
+			alertify.alert("<h1>Atención</h1><p class='p_texto'>Debes especificar un usuario para ser colocado como 'Activo' o 'Inactivo'</p>");
 			return false;
 		}
 	}

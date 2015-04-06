@@ -49,7 +49,7 @@
 			try{
 			  stmt = connection.createStatement(); 
 
-			  queryAccount = "INSERT INTO db_daluca.usuario(tipo_usuario, cedula, nombre, apellido, ID_usuario, ID_password, fecha_nacimiento, estatus, departamento) VALUES ("+tipo+","+cedula+",\""+nombre+"\",\""+apellido+"\",\""+usuario+"\",\""+usuario+"\",\""+f_nac+"\",\"Activo\",\""+departamento+"\");";
+			  queryAccount = "INSERT INTO db_daluca.usuario(tipo_usuario, cedula, nombre, apellido, ID_usuario, ID_password, fecha_nacimiento, estatus, departamento, comentario) VALUES ("+tipo+","+cedula+",\""+nombre+"\",\""+apellido+"\",\""+usuario+"\",\""+usuario+"\",\""+f_nac+"\",\"Activo\",\""+departamento+"\",\""+comentario+"\");";
 			  
 			  stmt.executeUpdate(queryAccount);
 			}catch(Exception ex){

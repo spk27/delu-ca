@@ -7,11 +7,9 @@
 	<div id="header">
 		<img class="float-left" src="images/Org_Logo.png" width="89px">
 		<h1 id="logo">DALU<span class="gray"> C.A</span></h1>
-		<h2 id="slogan">Proyecto de Desarrollo Web</h2>
 
 		<div id="loginform">
 			<form method="POST" class="login" action="JSP/cerrar_sesion.jsp">
-				<input name="cuenta" value="Cuenta" class="button_header button_large glow" type="button" />
 				<input name="salir" value="Salir" class="button_header button_large glow" type="submit" />
 			</form>
 		</div>
@@ -20,6 +18,7 @@
 	<div id="menu_usuario">
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+			<li><a href="JSP/usuario_info.jsp?user=<%out.print(session.getAttribute("ID_Usuario"));%>"><span class="span_menu">Mi Información</span></a></li>
 			<!--<li><a href="#"><span class="span_menu">Reportar</span></a></li>
 			<li><a href="#"><span class="span_menu">Consultar</span></a></li>-->
 			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Solicitante</span></li>

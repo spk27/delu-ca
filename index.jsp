@@ -36,14 +36,13 @@
     <div id="header">
       <img class="float-left" src="images/Org_Logo.png" width="89px">
       <h1 id="logo">DALU<span class="gray"> C.A</span></h1>
-      <h2 id="slogan">Proyecto de Desarrollo Web</h2>
       
       <div id="loginform">
         <form method="POST" class="login" action="JSP/verif_log.jsp" autocomplete="off" id="form-login" name="form-login" onsubmit="return validateFormIndex()">
           <p>
             <input id="usu" name="usu" class="input_header glow" placeholder="Usuario" type="text" />
             <input id="con" name="con" class="input_header glow" placeholder="Contraseña"  type="password" />
-            <input type="submit" id="boton-submit" name="boton-submit" value="Entrar" class="button_header button_short glow" />
+            <input type="submit" id="boton-submit" name="boton-submit" value="Entrar" class="glow" />
           </p>
         </form>
       </div>
