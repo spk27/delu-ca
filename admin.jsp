@@ -17,10 +17,20 @@
 	<div id="menu_administrador">
 		<ul>
 			<li id="current"><a href="#"><span class="span_menu">Inicio</span></a></li>
+			<li ><a href="JSP/solicitudes_administrador.jsp"><span class="span_menu">Solicitudes</span></a></li>
 			<li><a href="JSP/usuario_info.jsp?user=<%out.print(session.getAttribute("ID_Usuario"));%>"><span class="span_menu">Mi Información</span></a></li>
 			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Administrador</span></li>
 		</ul>
 	</div>
+
+	<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
+	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/db_daluca" user="root"  password="lperez18"/>
+	<sql:query dataSource="${snapshot}" var="result">
+	SELECT * FROM usuario WHERE estatus="Activo";
+	</sql:query>
+	<c:set var="por_atender" value="${result.rowCount}" />
+	<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
 
 	<div class="body_inside">
 		<div id="content-wrap">
@@ -60,10 +70,6 @@
 					<label>Departamento
 					<select class="select_form_cuerpo glow" name="departamento">
 						<option value="0">Elija Uno</option>
-						<!-- ******************* ********************* ******************** -->
-						<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-						url="jdbc:mysql://localhost/db_daluca"
-						user="root"  password="lperez18"/>
 						<!-- CONSULTA Y RESULTADO DEVUELTO EN LA VARIABLE 'result' -->
 						<sql:query dataSource="${snapshot}" var="result">
 						SELECT ID_departamento,nombre_dpto from departamento;
@@ -80,13 +86,20 @@
 			</div>
 		</div>
 
+		<sql:query dataSource="${snapshot}" var="result2">
+		SELECT * FROM usuario WHERE estatus="Inactivo";
+		</sql:query>
+		<c:set var="por_atender2" value="${result2.rowCount}" />
+		<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
+
 		<div id="content-wrap">
 			<div id="main">         
 			<h1 onclick="hideshow2();" class="mouse">Inhabilitar/Habilitar Usuario</h1>
 			<p class="p_texto">
-				Esta opción permite administrar el acceso de los usuarios al sistema. Escriba el usuario de cualquier miembro del sistema para cambiar su acceso ('<b>Inactivo</b>'/'<b>Activo</b>').<br>Para inhabilitar a un miembro escriba su usuario y presione el botón "Eliminar"</p>
+				Esta opción permite administrar el acceso de los usuarios al sistema. Escriba el usuario de cualquier miembro del sistema para cambiar su acceso ('<b>Inactivo</b>'/'<b>Activo</b>').<br>Para inhabilitar a un miembro escriba su usuario y presione el botón "Eliminar"<br>
+				<br>Actualmente el sistema tiene <c:out value="${por_atender}" /> usuarios activos y <c:out value="${por_atender2}" /> inactivos.
+			</p>
 			<form method="POST" action="JSP/eliminar_usuario.jsp" name="form2" id="form2" style="display:block" onsubmit="return validateFormElim()" autocomplete="off">
-				<!-- ******************* ********************* ******************** -->
 				<sql:query dataSource="${snapshot}" var="result">
 					SELECT * from db_daluca.usuario;
 				</sql:query>

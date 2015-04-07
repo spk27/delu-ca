@@ -21,11 +21,19 @@
 			<li style="float: right; margin-right: 20px;"><span class="span_menu"><%out.print(session.getAttribute("ID_Usuario"));%>, Analista</span></li>
 		</ul>
 	</div>
+	<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
+	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/db_daluca" user="root"  password="lperez18"/>
+	<sql:query dataSource="${snapshot}" var="result">
+	SELECT * FROM solicitud_ticket WHERE estatus="En Espera" ORDER BY prioridad ASC;
+	</sql:query>
+	<c:set var="por_atender" value="${result.rowCount}" />
+	<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
 
 	<div class="body_inside">
 		<div id="content-wrap">
 			<div id="main">
-				<h1 onclick="hideshow();" class="mouse">Solicitues por Atender</h1><p class="p_texto">Todas las solicitudes 'En Espera' por ser atendidas.<br>
+				<h1 onclick="hideshow();" class="mouse">Solicitues por Atender (<c:out value="${por_atender}" />)</h1><p class="p_texto">Todas las solicitudes 'En Espera' por ser atendidas.<br>
 				Para añadir una solicitud a tus "solicitudes que estás atendiendo" haz clic sobre cualquiera de ellas.</p>
 				<div id="FiltrarUsuarios">
 					<form name="form" style="display:block">
@@ -69,9 +77,18 @@
 			</div>
 		</div>
 
+	<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
+	<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
+	url="jdbc:mysql://localhost/db_daluca" user="root"  password="lperez18"/>
+	<sql:query dataSource="${snapshot}" var="result">
+	SELECT * FROM solicitud_ticket WHERE estatus="En Proceso" AND atendida_por="<%out.print(session.getAttribute("ID_Usuario"));%>";
+	</sql:query>
+	<c:set var="por_atender" value="${result.rowCount}" />
+	<!-- PARA OBTENER LOS NUMEROS DE SOLICITUDES POR ATENDER Y SIENDO ATENDIDAS -->
+
 		<div id="content-wrap">
 			<div id="main"> 
-				<h1 onclick="hideshow2();" class="mouse">Solicitudes que estás Atendiendo</h1>
+				<h1 onclick="hideshow2();" class="mouse">Solicitudes que estás Atendiendo (<c:out value="${por_atender}" />)</h1>
 				<p class="p_texto">Estas son las solicitudes que están siende atendidas por usted</p>
 				<div id="FiltrarUsuarios2">
 				<form name="form2" id="form2" style="display:block">
@@ -91,7 +108,7 @@
 								url="jdbc:mysql://localhost/db_daluca"
 								user="root"  password="lperez18"/>
 								<sql:query dataSource="${snapshot}" var="result">
-								SELECT * FROM solicitud_ticket WHERE estatus="En Proceso" ORDER BY prioridad ASC;
+								SELECT * FROM solicitud_ticket WHERE estatus="En Proceso" AND atendida_por="<%out.print(session.getAttribute("ID_Usuario"));%>" ORDER BY prioridad ASC;
 								</sql:query>
 								<c:forEach var="row" items="${result.rows}">
 								<tr class="<c:if test='${row.prioridad == 1}'>prio_maxima</c:if><c:if test='${row.prioridad == 2}'>prio_media</c:if><c:if test='${row.prioridad == 3}'>prio_baja</c:if>" id="<c:out value='${row.numero_solicitud}'/>">

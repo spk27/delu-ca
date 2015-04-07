@@ -3,7 +3,7 @@
 
 .big_table{
 	display:block;
-	max-height:300px;
+	max-height: 400px;
 	margin-bottom:5px;
 	margin-top: 5px;
 	overflow: hidden;
@@ -21,6 +21,25 @@ div.info_per p.vales{
 div.info_per p.vales:last-child{
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+div.info_per table.inside_tab{
+	border: none;
+	margin-top: 0px;
+	box-shadow: unset;
+}
+div.info_per table.inside_tab tbody td:first-child{
+	border-bottom-left-radius: 5px;
+}
+div.info_per table.inside_tab tbody td:last-child{
+	border-bottom-right-radius: 5px;
+}
+div.info_per table.inside_tab tbody td{
+	background-color: #E0E0E0;
+	font-size: 200%;
+}
+
+div#content-wrap.pequeño{
+	width: 33.3%;	
 }
 
 #inside{
@@ -70,7 +89,7 @@ h1, h2, h3 {
 	font-weight: Bold; 		
 }
 h1 { font-size: 120%; }
-h2 { font-size: 130%; }
+h2 { font-size: 150%; }
 h3 { font-size: 110%; color: #f2f7f9; }
 
 h1, h3, p {
@@ -79,7 +98,7 @@ h1, h3, p {
 }
 
 h2{
-	text-align: left;
+	text-align: center;
 	padding: 7px 5px 5px 15px;
 	margin-top: 14px;
 	background-color: #D6D6D6;
